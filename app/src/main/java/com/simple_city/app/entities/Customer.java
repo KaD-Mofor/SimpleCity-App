@@ -1,4 +1,4 @@
-package entities;
+package com.simple_city.app.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,6 @@
 package com.simple_city.app.config;
 
-import entities.*;
+import com.simple_city.app.entities.*;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
