@@ -12,7 +12,8 @@ public class RestDataConfig implements RepositoryRestConfigurer {
     /**
      * This method exposes standard rest api end points for the following classes:
      * Customer
-     * Address
+     * Product
+     * ProductCategory
      * <p>
      * Set page configuration parameters
      *
@@ -22,6 +23,7 @@ public class RestDataConfig implements RepositoryRestConfigurer {
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
         config.exposeIdsFor(Product.class);
+        config.exposeIdsFor(ProductCategory.class);
         config.exposeIdsFor(Customer.class);
         config.setDefaultPageSize(Integer.MAX_VALUE);
         config.setMaxPageSize(Integer.MAX_VALUE);

@@ -22,22 +22,19 @@ public class CartItem {
     @Column(name = "cart_item_id")
     private Long id;
 
-    private Timestamp create_date;
-    private Timestamp last_update;
+    @Column(name = "create_date")
+    private Timestamp createDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "vacation_id")
-    private Vacation vacation;
+    @Column(name = "last_update")
+    private Timestamp lastUpdate;
 
-    @ManyToMany(mappedBy = "cartItems")
-    private Set<Excursion> excursions;
+   // @ManyToOne(fetch = FetchType.LAZY)
+   // @JoinColumn(name = "product_id")
+   // private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")
     private Cart cart;
-
-    public void setExcursion(Excursion excursion) {
-    }
 
     public void setCustomer(Customer savedCustomer) {
     }
