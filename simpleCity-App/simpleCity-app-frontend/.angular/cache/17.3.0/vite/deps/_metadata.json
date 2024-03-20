@@ -1,0 +1,73 @@
+{
+  "hash": "1f584aa4",
+  "configHash": "df8f0e74",
+  "lockfileHash": "59992343",
+  "browserHash": "8156e7df",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "85372842",
+      "needsInterop": false
+    },
+    "@angular/common/http": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/http.mjs",
+      "file": "@angular_common_http.js",
+      "fileHash": "9ab563da",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "01b76e49",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "9f5b52c6",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "3b4584c1",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "fa0386de",
+      "needsInterop": false
+    },
+    "rxjs/operators": {
+      "src": "../../../../../node_modules/rxjs/dist/esm5/operators/index.js",
+      "file": "rxjs_operators.js",
+      "fileHash": "9e217316",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-QZVKFTF7": {
+      "file": "chunk-QZVKFTF7.js"
+    },
+    "chunk-OAGHVKEP": {
+      "file": "chunk-OAGHVKEP.js"
+    },
+    "chunk-KJE2EHIM": {
+      "file": "chunk-KJE2EHIM.js"
+    },
+    "chunk-PHUCU5SO": {
+      "file": "chunk-PHUCU5SO.js"
+    },
+    "chunk-2QIGSY4I": {
+      "file": "chunk-2QIGSY4I.js"
+    },
+    "chunk-RXWMTUTY": {
+      "file": "chunk-RXWMTUTY.js"
+    },
+    "chunk-O3FM7X4Z": {
+      "file": "chunk-O3FM7X4Z.js"
+    }
+  }
+}

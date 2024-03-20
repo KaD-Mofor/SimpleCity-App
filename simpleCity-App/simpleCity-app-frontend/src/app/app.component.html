@@ -1,0 +1,73 @@
+<!--Navigation-->
+<div> 
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <div class="container">
+          <!-- Logo -->
+          <div class="logo">
+              <a href="index.html" class="navbar-brand">
+              <img src="assets/images/products/Simple City.png" alt="simpleCity Logo" height="45" width="50" class="rounded"></a>
+          </div>
+          
+          <!-- Main Navigation Links -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                  </li>
+                  <li class="dropdown dropdown-menu-end">
+                      <a class="nav-link" href="catalog.html" id="catalogDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Catalog</a>
+                      <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="catalog.html">All</a></li>
+                          <li><a class="dropdown-item" href="#">Clothes</a></li>
+                          <li><a class="dropdown-item" href="#">Kids</a></li>
+                          <li><a class="dropdown-item" href="#">Electronics</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="contactUs.html">Contact</a>
+                  </li>
+              </ul>
+          </div>
+        
+          <!-- Header Search Option -->
+          <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+          <!-- Cart -->
+          <div class="cart">
+              <a class="nav-link" href="cart.html">
+                  <i class="fas fa-shopping-cart fa-lg text-white" style="font-size: 24px" role="button"></i></a>
+          </div>    
+          <!-- User Profile Icon -->
+          <div class="nav-item dropdown">
+              <a class="nav-link far fa-user-circle text-white" style="font-size: 30px" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="#">Settings</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Logout</a></li>
+              </ul>
+          </div>
+          <!-- Burger Menu -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+      </div>
+    </nav>
+  </div>
+</div>    
+
+<!--Main page -->
+<app-product-list></app-product-list>
+
+<!-- Detailed Footer -->
+
+<footer class="footer">
+    <div class="container">
+        <ul><a href="#">About Us</a></ul>
+        <ul><a href="contactUs.html">Contact Us</a></ul>
+        <ul><a href="#">Help</a></ul>
+    </div>
+</footer>

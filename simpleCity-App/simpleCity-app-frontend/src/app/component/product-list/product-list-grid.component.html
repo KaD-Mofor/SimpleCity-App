@@ -1,0 +1,66 @@
+<!-- Sales Banner-->
+<div class="w3-panel w3-pale-green w3-center w3-animate-top">
+    <span class="w3-tag w3-red w3-xlarge">Sale!</span>
+  </div>
+  
+  <!-- Header Carousel -->
+  <div class="container-fluid mt-3" style="width: 100%">
+    <div id="salesItem" class="carousel slide" data-bs-ride="carousel">
+  
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+        <button type="button" data-bs-target="#salesItem" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#salesItem" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#salesItem" data-bs-slide-to="2"></button>
+        </div>
+        
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner w3-center">
+            <div class="carousel-item active">
+                <img src="assets/images/products/kids sleeveless.png" alt="kids sleeveless" class="activeWear" height="700" width="700">
+            </div>
+            <div class="carousel-item">
+                <img src="assets/images/products/Reader.png" alt="Jeans" class="Reader" height="700" width="700">
+            </div>
+            <div class="carousel-item">
+                <img src="assets/images/products/Beanie.png" alt="Beannie" class="Beanie" height="700" width="700">
+            </div>
+        </div>
+        
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev w3-text-blue" type="button" data-bs-target="#salesItem" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#salesItem" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+  </div>
+
+<!-- Catalog/Main page -->
+
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div *ngFor="let tempProduct of products" class="col-md-3">
+                    <div class="Product-box w3-center">
+                        <div class="w3-panel">
+                            <a href="product-details.html">
+                                <img src="{{tempProduct.imageUrl}}" height="170" width="170" class="img-responsive w3-center">
+                            </a>
+                        </div>
+                        <div>
+                            <a href="product-details.html">
+                                <b>{{tempProduct.name}}</b>
+                            </a>
+                        </div>
+                        <p>{{tempProduct.description}}</p>
+                        <div class="price">{{tempProduct.unitPrice | currency:'USD'}}</div>
+                        <button href="cart.html" class="btn btn-primary" type="button">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
