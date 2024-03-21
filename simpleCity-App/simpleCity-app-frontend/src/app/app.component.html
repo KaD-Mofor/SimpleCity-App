@@ -19,9 +19,9 @@
                       <a class="nav-link" href="catalog.html" id="catalogDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Catalog</a>
                       <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="catalog.html">All</a></li>
-                          <li><a class="dropdown-item" href="#">Clothes</a></li>
-                          <li><a class="dropdown-item" href="#">Kids</a></li>
-                          <li><a class="dropdown-item" href="#">Electronics</a></li>
+                          <li><a class="dropdown-item" routerLink="/category/1" routerLinkActive="active-link">Clothes</a></li>
+                          <li><a class="dropdown-item" routerLink="/category/2" routerLinkActive="active-link">Toys</a></li>
+                          <li><a class="dropdown-item" routerLink="/category/3" routerLinkActive="active-link">Electronics</a></li>
                       </ul>
                   </li>
                   <li class="nav-item">
@@ -60,7 +60,8 @@
 </div>    
 
 <!--Main page -->
-<app-product-list></app-product-list>
+<!-- <app-product-list></app-product-list> -->
+<router-outlet></router-outlet>
 
 <!-- Detailed Footer -->
 
