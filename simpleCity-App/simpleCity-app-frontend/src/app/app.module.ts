@@ -11,6 +11,7 @@ import { ProductCategoryMenuComponent } from './component/product-category-menu/
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './component/search/search.component';
 import { ProductDetailsComponent } from './component/product-details/product-details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProductDetailsComponent } from './component/product-details/product-det
     HttpClientModule,
     AppRoutingModule,
     RouterModule,
-    CommonModule
+    CommonModule,
+    NgbModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

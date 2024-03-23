@@ -35,6 +35,16 @@ export class ProductService {
     return this.getProducts(searchUrl);
   }
   
+  getSearchProductPagination(p: number, 
+    pSize: number, 
+    theKeyword: string): Observable<GetResponseProducts> {
+
+//build URL based on catergory id and page data
+const searchUrl = `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}`
++ `&page=${p}&size=${pSize}`;
+
+return this.httpClient.get<GetResponseProducts>(searchUrl);
+}
 
   private getProducts(searchUrl: string) {
     return this.httpClient.get<GetResponseProducts>(searchUrl).pipe(
@@ -48,12 +58,30 @@ export class ProductService {
 
     return this.httpClient.get<Product>(productUrl);
   }
+
+  getProductListPagination(p: number, 
+                          pSize: number, 
+                          theCategoryId: number): Observable<GetResponseProducts> {
+
+    //build URL based on catergory id and page data
+    const searchUrl = `${this.baseUrl}/search/findByCategoryId?id=${theCategoryId}`
+          + `&page=${p}&size=${pSize}`;
+
+    return this.httpClient.get<GetResponseProducts>(searchUrl);
+  }
 }
 
 //Grab data from REST api and unwrap it to make it available as an array of products
 interface GetResponseProducts {
   _embedded: {
     products: Product[];
+  },
+  //pagination code
+  page: {
+    size: number,
+    totalElements: number,
+    totalPages: number,
+    number: number
   }
 }
 
