@@ -2,6 +2,26 @@ body{
     background-color:azure;
 }
 
-/* .logo {
-    text-align: left;
-} */
+/* product details page */
+div.section-content{
+    
+    align-content: center;
+}
+
+div.w3-display-container{
+    width: 50%;
+}
+.itemDetailImg{
+    width: 100%;
+}
+div.w3-display{
+    font-size: 120%;
+}
+
+.detailDesc{
+    font-size: 150%;
+    padding: 4rem;
+    float:left;
+}
+
+

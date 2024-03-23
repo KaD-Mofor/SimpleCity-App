@@ -46,12 +46,12 @@
                 <div *ngFor="let tempProduct of products" class="col-md-3">
                     <div class="Product-box w3-center">
                         <div class="w3-panel">
-                            <a href="product-details.html">
+                            <a routerLink="/products/{{tempProduct.id}}">
                                 <img src="{{tempProduct.imageUrl}}" height="170" width="170" class="img-responsive w3-center">
                             </a>
                         </div>
                         <div>
-                            <a href="product-details.html">
+                            <a routerLink="/products/{{tempProduct.id}}">
                                 <b>{{tempProduct.name}}</b>
                             </a>
                         </div>
