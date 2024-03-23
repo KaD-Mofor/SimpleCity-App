@@ -78,10 +78,10 @@ VALUES (1, '5479482JK849BV', 'High Waist Distressed Jeans', 'Hot button-up high 
 		(2, '7346293JSG80', 'Beanie', 'I Believe Beanie hat',22.00, 'assets/images/products/Beanie.png',1,25,NOW(), NOW(),1),
 		(3, '700Y6293JSU98', 'Reader', 'Interactive kid reading toy',18.50, 'assets/images/products/Reader.png',1,50,NOW(), NOW(),3),
 		(4, '536732YUD0932', 'Kids Sleeveless', 'Active sleveless kids\' top and pants',15.50, 'assets/images/products/kids sleeveless.png',1,50,NOW(), NOW(),1),
-		(5, '7346UHG476593', 'Learning Cards', 'YoYo Learning cards for kids',18.50, 'assets/images/products/YOYO_cards.png',1,25,NOW(), NOW(),2),
-		(6, '700Y6293JSU98', 'High Cut Jeans', 'High waisted distressed light blue Jeans',28.99, 'assets/images/products/High_Cut_Jeans.png',1,50,NOW(), NOW(),1),
+		(5, '7346UHG476593', 'Learning Cards', 'YoYo Learning cards for kids',18.00, 'assets/images/products/YoYo_cards.png',1,25,NOW(), NOW(),2),
+		(6, '700Y6293POU98', 'High Cut Jeans', 'High waisted distressed light blue Jeans',26.00, 'assets/images/products/High_Cut_Jeans.png',1,25,NOW(), NOW(),1),
 		(7, '536732YUD0932', 'Customed Onesies', 'Personalized baby onesies',28.00, 'assets/images/products/Personalized_Onesie.png',1,50,NOW(), NOW(),1),
-		(8, '536732YUD0932', 'Freedom T-shirt', 'What is freedom T-Shirt in black',35.00, 'assets/images/products/Freedom_T-shirt.png',1,50,NOW(), NOW(),1);
+		(8, '536092YUD0932', 'Freedom T-shirt', 'What is freedom T-Shirt in black',35.00, 'assets/images/products/Freedom_T-shirt.png',1,50,NOW(), NOW(),1);
 INSERT INTO `simple-city-app`.countries
 VALUES (1, 'U.S', NOW(), NOW()),
     (2, 'UK', NOW(), NOW()),
