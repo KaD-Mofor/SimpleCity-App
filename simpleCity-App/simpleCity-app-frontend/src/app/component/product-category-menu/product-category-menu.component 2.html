@@ -1,0 +1,32 @@
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        </li>
+        <li class="dropdown dropdown-menu-end">
+            <a class="nav-link" href="catalog.html" id="catalogDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Catalog</a>
+            <ul class="dropdown-menu">
+                
+                <li><a class="dropdown-item" href="catalog.html">All</a></li>
+
+
+                <!-- @TODO figure out why this is not working. -->
+
+                    <li *ngFor="let pCategory of productCategories"> 
+                    <a class="dropdown-item" routerLink="/category/{{ pCategory.id }}" routerLinkActive="active-link">{{ pCategory.categoryName }}
+                    </a>
+                </li>
+                <!-- <li> 
+                    <a class="dropdown-item" routerLink="/category/1" routerLinkActive="active-link">Clothes
+                    </a>
+                <li><a class="dropdown-item" routerLink="/category/2" routerLinkActive="active-link">Toys</a></li>
+                <li><a class="dropdown-item" routerLink="/category/3" routerLinkActive="active-link">Electronics</a></li>
+                -->
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="contactUs.html">Contact</a>
+        </li>
+    </ul>
+</div>
