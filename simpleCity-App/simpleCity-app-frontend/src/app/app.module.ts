@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { SearchComponent } from './component/search/search.component';
 import { ProductDetailsComponent } from './component/product-details/product-details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartStatusComponent } from './component/cart-status/cart-status.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProductListComponent,
     ProductCategoryMenuComponent,
     SearchComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartStatusComponent
   ],
   imports: [
     BrowserModule,

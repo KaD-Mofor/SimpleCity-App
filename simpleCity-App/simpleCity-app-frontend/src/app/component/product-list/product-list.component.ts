@@ -3,6 +3,8 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../common/product';
 import { ActivatedRoute } from '@angular/router';
 import { createMayBeForwardRefExpression } from '@angular/compiler';
+import { CartService } from '../../service/cart.service';
+import { CartItem } from '../../common/cart-item';
 
 @Component({
   selector: 'app-product-list',
@@ -10,7 +12,6 @@ import { createMayBeForwardRefExpression } from '@angular/compiler';
   styleUrl: './product-list.component.css'
 })
 export class ProductListComponent implements OnInit {
-
   products: Product[] = [];
   currentCategoryId: number = 1;
   previousCategoryId: number = 1;
@@ -24,6 +25,7 @@ export class ProductListComponent implements OnInit {
   previousKeyword: string = "";
 
   constructor(private productService: ProductService,
+              private cartService: CartService,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -103,5 +105,14 @@ export class ProductListComponent implements OnInit {
       this.pageSize = data.page.size;
       this.totalElements = data.page.totalElements;
     };
+    }
+
+  addToCart(product: Product) {
+    console.log(`Addingto cart: ${product.name}, ${product.unitPrice}`);
+    
+    const iCartitem = new CartItem(product);
+
+    this.cartService.addToCart(iCartitem);
   }
+
 }

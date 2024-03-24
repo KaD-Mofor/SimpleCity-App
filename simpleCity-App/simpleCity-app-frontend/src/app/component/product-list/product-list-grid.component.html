@@ -57,7 +57,7 @@
                         </div>
                         <p>{{tempProduct.description}}</p>
                         <div class="price">{{tempProduct.unitPrice | currency:'USD'}}</div>
-                        <button href="cart.html" class="btn btn-primary" type="button">Add to cart</button>
+                        <button (click)="addToCart(tempProduct)" class="btn btn-primary" type="button">Add to cart</button>
                     </div>
                 </div>
                 <!-- if searched product is missing, notify user -->
