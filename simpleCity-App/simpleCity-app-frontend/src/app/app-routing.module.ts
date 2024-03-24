@@ -6,11 +6,11 @@ import { CartDetailsComponent } from './component/cart-details/cart-details.comp
 
 const routes: Routes = [
   {path: 'cart-details', component: CartDetailsComponent},
+  {path: 'products', component: ProductListComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
-  {path: 'products', component: ProductListComponent},
   {path: '', redirectTo: '/products', pathMatch: 'full'},
   {path: '**', redirectTo: '/products', pathMatch: 'full'},
 ];

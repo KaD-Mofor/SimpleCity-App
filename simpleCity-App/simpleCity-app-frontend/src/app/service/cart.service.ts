@@ -51,6 +51,26 @@ export class CartService {
     //Debug cart values
     this.cartLog(totalPriceValue, totalQtyV); 
   }
+
+  decrementQty(t: CartItem) {
+    t.quantity--;
+
+    if (t.quantity === 0){
+      this.remove(t);
+    } else{
+      this.calculateCartTotals();
+    }
+  }
+
+  remove(t: CartItem) {
+    const itemIndex = this.cartItems.findIndex(i => i.id == t.id)
+    
+    if (itemIndex > -1) {
+      this.cartItems.splice(itemIndex, 1);
+      this.calculateCartTotals();
+    }
+  }
+
   cartLog(totalPriceValue: number, totalQtyV: number) {
     console.log('Cart status');
     for (let ci of this.cartItems) {

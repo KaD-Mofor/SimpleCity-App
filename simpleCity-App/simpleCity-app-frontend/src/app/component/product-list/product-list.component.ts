@@ -37,7 +37,8 @@ export class ProductListComponent implements OnInit {
   handleListProducts() {
 
     //check if id param is available
-    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+    const hasCategoryId: boolean = this.route.snapshot.queryParamMap.has('id');
+      // console.log(`hasCategoryId :=: , ${hasCategoryId}`)
 
     if (hasCategoryId) {
       //Get the id param string and conver to number using '+'
