@@ -7,7 +7,7 @@
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="firstName" type="text" placeholder="First Name" required>
+                        <input class="w3-input w3-border" formControlName="firstName" type="text" placeholder="First Name">
                             <!-- Validation -->
                             <div *ngIf="checkoutFormGroup.get('customer.firstName')?.invalid && (checkoutFormGroup.get('customer.firstName')?.dirty || checkoutFormGroup.get('customer.firstName')?.touched)" class="alert alert-danger mt-1">
                                 <!-- <div *ngIf="checkoutFormGroup.get('customer.firstName')?.errors?.['required']">First Name is required.</div>
@@ -31,7 +31,7 @@
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="lastName" type="text" placeholder="Last Name" required>
+                        <input class="w3-input w3-border" formControlName="lastName" type="text" placeholder="Last Name">
                             <!-- Validation -->
                             <div *ngIf="customerLastName?.invalid && (customerLastName?.dirty || customerLastName?.touched)" class="alert alert-danger mt-1">
                                 <div *ngIf="customerLastName?.errors?.['required']">Last Name is required</div>
@@ -47,7 +47,7 @@
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope"></i></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="email" type="email" placeholder="Email" required>
+                        <input class="w3-input w3-border" formControlName="email" type="email" placeholder="Email">
                         <!-- Validation -->
                         <div *ngIf="customerEmail?.invalid && (customerEmail?.dirty || customerEmail?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="customerEmail?.errors?.['pattern']">Use a valid email format</div>
@@ -59,8 +59,7 @@
                     <div class="w3-row w3-section">
                         <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
                         <div class="w3-rest">
-                            <input class="w3-input w3-border" formControlName="phone" 
-                            type="tel" placeholder="(333) 444-5555">
+                            <input class="w3-input w3-border" formControlName="phone" placeholder="(333)444-5555">
                             <!-- Validation -->
                             <div *ngIf="customerPhone?.invalid && (customerPhone?.dirty || customerPhone?.touched)" class="alert alert-danger mt-1">
                                 <div *ngIf="customerPhone?.errors?.['pattern']">Enter your 10 digit phone number</div>
@@ -77,7 +76,7 @@
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="street" type="text" placeholder="Street Address" required>
+                        <input class="w3-input w3-border" formControlName="street" type="text" placeholder="Street Address">
                             <!-- Validation -->
                             <div *ngIf="street?.invalid && (street?.dirty || street?.touched)" class="alert alert-danger mt-1">
                                 <div *ngIf="street?.errors?.['required']">Street address is required</div>
@@ -91,7 +90,7 @@
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="city" type="text" placeholder="City" required>
+                        <input class="w3-input w3-border" formControlName="city" type="text" placeholder="City">
                         <!-- Validation -->
                         <div *ngIf="city?.invalid && (city?.dirty || city?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="city?.errors?.['required']">City address is required</div>
@@ -106,7 +105,7 @@
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="state" type="text" placeholder="State" required>
+                        <input class="w3-input w3-border" formControlName="state" type="text" placeholder="State">
                         <!-- Validation -->
                         <div *ngIf="state?.invalid && (state?.dirty || state?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="state?.errors?.['required']">State address is required</div>
@@ -121,7 +120,7 @@
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="country" type="text" placeholder="Country" required>
+                        <input class="w3-input w3-border" formControlName="country" type="text" placeholder="Country">
                         <!-- Validation -->
                         <div *ngIf="country?.invalid && (country?.dirty || country?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="country?.errors?.['required']">Country is required</div>
@@ -136,7 +135,7 @@
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="zipCode" type="number" placeholder="Zip Code" required>
+                        <input class="w3-input w3-border" formControlName="zipCode" placeholder="Zip Code">
                         <!-- Validation -->
                         <div *ngIf="zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="zipCode?.errors?.['required']">zipCode is required</div>
@@ -163,7 +162,7 @@
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="street" type="text" placeholder="Street Address" required>
+                        <input class="w3-input w3-border" formControlName="street" type="text" placeholder="Street Address">
                         <!-- Validation -->
                         <div *ngIf="bstreet?.invalid && (bstreet?.dirty || bstreet?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="bstreet?.errors?.['required']">Street address is required</div>
@@ -177,7 +176,7 @@
                     <div class="w3-row w3-section">
                         <div class="w3-col" style="width:50px"></div>
                             <div class="w3-rest">
-                            <input class="w3-input w3-border" formControlName="city" type="text" placeholder="City" required>
+                            <input class="w3-input w3-border" formControlName="city" type="text" placeholder="City">
                             <!-- Validation -->
                             <div *ngIf="bcity?.invalid && (bcity?.dirty || bcity?.touched)" class="alert alert-danger mt-1">
                                 <div *ngIf="bcity?.errors?.['required']">City address is required</div>
@@ -192,7 +191,7 @@
                         <div class="w3-row w3-section">
                         <div class="w3-col" style="width:50px"></div>
                             <div class="w3-rest">
-                            <input class="w3-input w3-border" formControlName="state" type="text" placeholder="State" required>
+                            <input class="w3-input w3-border" formControlName="state" type="text" placeholder="State">
                             <!-- Validation -->
                             <div *ngIf="bstate?.invalid && (bstate?.dirty || bstate?.touched)" class="alert alert-danger mt-1">
                                 <div *ngIf="bstate?.errors?.['required']">State address is required</div>
@@ -207,7 +206,7 @@
                         <div class="w3-row w3-section">
                         <div class="w3-col" style="width:50px"></div>
                             <div class="w3-rest">
-                            <input class="w3-input w3-border" formControlName="country" type="text" placeholder="Country" required>
+                            <input class="w3-input w3-border" formControlName="country" type="text" placeholder="Country">
                             <!-- Validation -->
                             <div *ngIf="bcountry?.invalid && (bcountry?.dirty || bcountry?.touched)" class="alert alert-danger mt-1">
                                 <div *ngIf="bcountry?.errors?.['required']">Country is required</div>
@@ -222,7 +221,7 @@
                         <div class="w3-row w3-section">
                         <div class="w3-col" style="width:50px"></div>
                             <div class="w3-rest">
-                            <input class="w3-input w3-border" formControlName="zipCode" type="number" placeholder="Zip Code" required>
+                            <input class="w3-input w3-border" formControlName="zipCode" placeholder="Zip Code">
                             <!-- Validation -->
                             <div *ngIf="bzipCode?.invalid && (bzipCode?.dirty || bzipCode?.touched)" class="alert alert-danger mt-1">
                                 <div *ngIf="bzipCode?.errors?.['required']">zipCode is required</div>
@@ -253,7 +252,7 @@
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="cName" type="text" placeholder="Name on card" required>
+                        <input class="w3-input w3-border" formControlName="cName" type="text" placeholder="Name on card">
                         <!-- Validation -->
                             <div *ngIf="cName?.invalid && (cName?.dirty || cName?.touched)" class="alert alert-danger mt-1">
                                 <div *ngIf="cName?.errors?.['required']">Enter the name on your card</div>
@@ -265,7 +264,7 @@
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="cNumber" type="number" placeholder="Card number" required>
+                        <input class="w3-input w3-border" formControlName="cNumber" placeholder="Card number">
                         <!-- Validation -->
                         <div *ngIf="cNumber?.invalid && (cNumber?.dirty || cNumber?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="cNumber?.errors?.['required']">Card Number is required</div>
@@ -276,7 +275,7 @@
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="cCode" type="number" maxlength="3" placeholder="Security Code" maxlength="3" required>
+                        <input class="w3-input w3-border" formControlName="cCode" placeholder="Security Code">
                         <!-- Validation -->
                         <div *ngIf="cCode?.invalid && (cCode?.dirty || cCode?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="cCode?.errors?.['required']">Enter your card PIN</div>
@@ -287,22 +286,22 @@
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="expMonth" type="number" maxlength="2" placeholder="MM" required>
+                        <input class="w3-input w3-border" formControlName="expMonth" placeholder="MM">
                         <!-- Validation -->
                         <div *ngIf="expMonth?.invalid && (expMonth?.dirty || expMonth?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="expMonth?.errors?.['required']">Enter expiration month</div>
-                            <div *ngIf="expMonth?.errors?.['pattern']">Expiration month must be atleast 2 digits long</div>
+                            <div *ngIf="expMonth?.errors?.['pattern']">Expiration month must be 2 digits long</div>
                         </div>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="expYear" type="number" maxlength="4" placeholder="YYYY" required>
+                        <input class="w3-input w3-border" formControlName="expYear" placeholder="YYYY" >
                         <!-- Validation -->
                         <div *ngIf="expYear?.invalid && (expYear?.dirty || expYear?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="expYear?.errors?.['required']">Enter expiration year</div>
-                            <div *ngIf="expYear?.errors?.['pattern']">Expiration year must be atleast 4 digits long</div>
+                            <div *ngIf="expYear?.errors?.['pattern']">Expiration year must be 4 digits long</div>
                         </div>
                         </div>
                     </div> 
