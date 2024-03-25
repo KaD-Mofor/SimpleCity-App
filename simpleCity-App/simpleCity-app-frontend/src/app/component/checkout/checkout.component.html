@@ -8,6 +8,11 @@
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
                         <div class="w3-rest">
                         <input class="w3-input w3-border" formControlName="firstName" type="text" placeholder="First Name" required>
+                            <!-- Validation -->
+                            <div *ngIf="checkoutFormGroup.get('customer.firstName')?.invalid && (checkoutFormGroup.get('customer.firstName')?.dirty || checkoutFormGroup.get('customer.firstName')?.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="checkoutFormGroup.get('customer.firstName')?.errors?.['required']">First Name is required.</div>
+                                <div *ngIf="checkoutFormGroup.get('customer.firstName')?.errors?.['minlength']">First Name must be atleast 2 characters long.</div>
+                            </div>
                         </div>
                     </div>
                     
@@ -15,6 +20,11 @@
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
                         <div class="w3-rest">
                         <input class="w3-input w3-border" formControlName="lastName" type="text" placeholder="Last Name" required>
+                            <!-- Validation -->
+                            <div *ngIf="customerLastName?.invalid && (customerLastName?.dirty || customerLastName?.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="customerLastName?.errors?.['required']">Last Name is required</div>
+                                <div *ngIf="customerLastName?.errors?.['minlength']">Last Name must be atleast 2 characters long</div>
+                            </div>
                         </div>
                     </div>
                     
@@ -22,6 +32,11 @@
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope"></i></div>
                         <div class="w3-rest">
                         <input class="w3-input w3-border" formControlName="email" type="email" placeholder="Email" required>
+                        <!-- Validation -->
+                        <div *ngIf="customerEmail?.invalid && (customerEmail?.dirty || customerEmail?.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="customerEmail?.errors?.['pattern']">Use a valid email format</div>
+                            <div *ngIf="customerEmail?.errors?.['required']">Email is required</div>
+                        </div>
                         </div>
                     </div>
                     
@@ -29,7 +44,11 @@
                         <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
                         <div class="w3-rest">
                             <input class="w3-input w3-border" formControlName="phone" 
-                            type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="333-444-5555">
+                            type="tel" placeholder="(333) 444-5555">
+                            <!-- Validation -->
+                            <div *ngIf="customerPhone?.invalid && (customerPhone?.dirty || customerPhone?.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="customerPhone?.errors?.['pattern']">Enter phone number like (333) 444-5555</div>
+                            </div>
                         </div>       
                     </div> 
                 </div>
