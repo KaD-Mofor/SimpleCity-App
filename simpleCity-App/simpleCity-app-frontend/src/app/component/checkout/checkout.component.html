@@ -59,30 +59,55 @@
                     <div class="w3-col" style="width:50px"></div>
                         <div class="w3-rest">
                         <input class="w3-input w3-border" formControlName="street" type="text" placeholder="Street Address" required>
+                            <!-- Validation -->
+                            <div *ngIf="street?.invalid && (street?.dirty || street?.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="street?.errors?.['required']">Street address is required</div>
+                                <div *ngIf="street?.errors?.['minlength']">Street address must be atleast 5 characters long</div>
+                            </div>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"></div>
                         <div class="w3-rest">
                         <input class="w3-input w3-border" formControlName="city" type="text" placeholder="City" required>
+                        <!-- Validation -->
+                        <div *ngIf="city?.invalid && (city?.dirty || city?.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="city?.errors?.['required']">City address is required</div>
+                            <div *ngIf="city?.errors?.['minlength']">City address must be atleast 5 characters long</div>
+                        </div>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"></div>
                         <div class="w3-rest">
                         <input class="w3-input w3-border" formControlName="state" type="text" placeholder="State" required>
+                        <!-- Validation -->
+                        <div *ngIf="state?.invalid && (state?.dirty || state?.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="state?.errors?.['required']">State address is required</div>
+                            <div *ngIf="state?.errors?.['minlength']">State address must be atleast 2 characters long</div>
+                        </div>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"></div>
                         <div class="w3-rest">
                         <input class="w3-input w3-border" formControlName="country" type="text" placeholder="Country" required>
+                        <!-- Validation -->
+                        <div *ngIf="country?.invalid && (country?.dirty || country?.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="country?.errors?.['required']">Country is required</div>
+                            <div *ngIf="country?.errors?.['minlength']">Country must be atleast 2 characters long</div>
+                        </div>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"></div>
                         <div class="w3-rest">
                         <input class="w3-input w3-border" formControlName="zipCode" type="number" placeholder="Zip Code" required>
+                        <!-- Validation -->
+                        <div *ngIf="zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="zipCode?.errors?.['required']">zipCode is required</div>
+                            <div *ngIf="zipCode?.errors?.['pattern']">zipCode should be 5 characters long</div>
+                        </div>
                         </div>
                     </div>
                     
@@ -102,33 +127,57 @@
                     <div class="w3-col" style="width:50px"></div>
                         <div class="w3-rest">
                         <input class="w3-input w3-border" formControlName="street" type="text" placeholder="Street Address" required>
+                        <!-- Validation -->
+                        <div *ngIf="bstreet?.invalid && (bstreet?.dirty || bstreet?.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="bstreet?.errors?.['required']">Street address is required</div>
+                            <div *ngIf="bstreet?.errors?.['minlength']">Street address must be atleast 5 characters long</div>
+                        </div>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:50px"></div>
-                        <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="city" type="text" placeholder="City" required>
+                        <div class="w3-col" style="width:50px"></div>
+                            <div class="w3-rest">
+                            <input class="w3-input w3-border" formControlName="city" type="text" placeholder="City" required>
+                            <!-- Validation -->
+                            <div *ngIf="bcity?.invalid && (bcity?.dirty || bcity?.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="bcity?.errors?.['required']">City address is required</div>
+                                <div *ngIf="bcity?.errors?.['minlength']">City address must be atleast 5 characters long</div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                        <div class="w3-col" style="width:50px"></div>
+                            <div class="w3-rest">
+                            <input class="w3-input w3-border" formControlName="state" type="text" placeholder="State" required>
+                            <!-- Validation -->
+                            <div *ngIf="bstate?.invalid && (bstate?.dirty || bstate?.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="bstate?.errors?.['required']">State address is required</div>
+                                <div *ngIf="bstate?.errors?.['minlength']">State address must be atleast 2 characters long</div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                        <div class="w3-col" style="width:50px"></div>
+                            <div class="w3-rest">
+                            <input class="w3-input w3-border" formControlName="country" type="text" placeholder="Country" required>
+                            <!-- Validation -->
+                            <div *ngIf="bcountry?.invalid && (bcountry?.dirty || bcountry?.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="bcountry?.errors?.['required']">Country is required</div>
+                                <div *ngIf="bcountry?.errors?.['minlength']">Country must be atleast 2 characters long</div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="w3-row w3-section">
+                        <div class="w3-col" style="width:50px"></div>
+                            <div class="w3-rest">
+                            <input class="w3-input w3-border" formControlName="zipCode" type="number" placeholder="Zip Code" required>
+                            <!-- Validation -->
+                            <div *ngIf="bzipCode?.invalid && (bzipCode?.dirty || bzipCode?.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="bzipCode?.errors?.['required']">zipCode is required</div>
+                                <div *ngIf="bzipCode?.errors?.['pattern']">zipCode should be 5 characters long</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:50px"></div>
-                        <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="state" type="text" placeholder="State" required>
-                        </div>
-                    </div>
-                    <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:50px"></div>
-                        <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="country" type="text" placeholder="Country" required>
-                        </div>
-                    </div>
-                    <div class="w3-row w3-section">
-                    <div class="w3-col" style="width:50px"></div>
-                        <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="zipCode" type="number" placeholder="Zip Code" required>
-                        </div>
-                    </div>
-                    
                 </div>
                 <!-- credit card -->
                 <div formGroupName="billingAddress" class="form-area">
@@ -143,36 +192,65 @@
                             <option>Discover</option>
                             <option>American Express</option>
                         </select>
+                        <!-- Validation -->
+                        <div *ngIf="cType?.invalid && (cType?.dirty || cType?.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="cType?.errors?.['required']">Please select a card type</div>
+                        </div>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
                         <div class="w3-rest">
                         <input class="w3-input w3-border" formControlName="cNumber" type="number" placeholder="Card number" required>
+                        <!-- Validation -->
+                        <div *ngIf="cNumber?.invalid && (cNumber?.dirty || cNumber?.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="cNumber?.errors?.['required']">Card Number is required</div>
+                            <div *ngIf="cNumber?.errors?.['pattern']">card Number must be as on your card.</div>
+                        </div>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
                         <div class="w3-rest">
                         <input class="w3-input w3-border" formControlName="cName" type="text" placeholder="Name on card" required>
+                        <!-- Validation -->
+                        <div *ngIf="cName?.invalid && (cName?.dirty || cName?.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="cName?.errors?.['required']">Enter the name on your card</div>
+                            <div *ngIf="cName?.errors?.['minlength']">Name on card must be atleast 5 characters long</div>
+                        </div>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
                         <div class="w3-rest">
                         <input class="w3-input w3-border" formControlName="cCode" type="number" maxlength="3" placeholder="Security Code" maxlength="3" required>
+                        <!-- Validation -->
+                        <div *ngIf="cCode?.invalid && (cCode?.dirty || cCode?.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="cCode?.errors?.['required']">Enter your card PIN</div>
+                            <div *ngIf="cCode?.errors?.['pattern']">PIN must be 3 characters long</div>
+                        </div>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
                         <div class="w3-rest">
                         <input class="w3-input w3-border" formControlName="expMonth" type="number" maxlength="2" placeholder="MM" required>
+                        <!-- Validation -->
+                        <div *ngIf="expMonth?.invalid && (expMonth?.dirty || expMonth?.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="expMonth?.errors?.['required']">Enter expiration month</div>
+                            <div *ngIf="expMonth?.errors?.['pattern']">Expiration month must be atleast 2 digits long</div>
+                        </div>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
                         <div class="w3-rest">
                         <input class="w3-input w3-border" formControlName="expYear" type="number" maxlength="4" placeholder="YYYY" required>
+                        <!-- Validation -->
+                        <div *ngIf="expYear?.invalid && (expYear?.dirty || expYear?.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="expYear?.errors?.['required']">Enter expiration year</div>
+                            <div *ngIf="expYear?.errors?.['pattern']">Expiration year must be atleast 4 digits long</div>
+                        </div>
                         </div>
                     </div> 
                 </div>
