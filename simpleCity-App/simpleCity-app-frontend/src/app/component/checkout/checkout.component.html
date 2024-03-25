@@ -1,0 +1,174 @@
+<div>
+    <div>
+        <div>
+            <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()" class="w3-container w3-card-4 w3-light-grey w3-text-aqua w3-margin w3-center"> 
+                <div formGroupName="customer" class="form-area">
+                    <h3>Customer</h3>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="firstName" type="text" placeholder="First Name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="lastName" type="text" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope"></i></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="email" type="email" placeholder="Email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="w3-row w3-section">
+                        <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
+                        <div class="w3-rest">
+                            <input class="w3-input w3-border" formControlName="phone" 
+                            type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="333-444-5555">
+                        </div>       
+                    </div> 
+                </div>
+                <!-- shipping address -->
+                <div formGroupName="shippingAddress" class="form-area">
+                    <h3>Shipping Address</h3>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="street" type="text" placeholder="Street Address" required>
+                        </div>
+                    </div>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="city" type="text" placeholder="City" required>
+                        </div>
+                    </div>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="state" type="text" placeholder="State" required>
+                        </div>
+                    </div>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="country" type="text" placeholder="Country" required>
+                        </div>
+                    </div>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="zipCode" type="number" placeholder="Zip Code" required>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="copyAddress">
+                    <label class="addr-checkbox">
+                        <input type="checkbox" (change)="sameAsShoppingAddress($event)">
+                        <span class="addr-checkbox"> Same as Shopping address</span>
+                    </label>
+
+                </div>
+                <!-- billing address -->
+                <div formGroupName="billingAddress" class="form-area">
+                    <h3>Billing Address</h3>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="street" type="text" placeholder="Street Address" required>
+                        </div>
+                    </div>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="city" type="text" placeholder="City" required>
+                        </div>
+                    </div>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="state" type="text" placeholder="State" required>
+                        </div>
+                    </div>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="country" type="text" placeholder="Country" required>
+                        </div>
+                    </div>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="zipCode" type="number" placeholder="Zip Code" required>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- credit card -->
+                <div formGroupName="billingAddress" class="form-area">
+                    <h3>Credit Card</h3>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
+                        <div class="w3-rest">
+                        <select class="w3-input w3-border" formControlName="cType">
+                            <option disabled selected>Select your card type</option>
+                            <option>Visa</option>
+                            <option>Mastercard</option>
+                            <option>Discover</option>
+                            <option>American Express</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="cNumber" type="number" placeholder="Card number" required>
+                        </div>
+                    </div>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="cName" type="text" placeholder="Name on card" required>
+                        </div>
+                    </div>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="cCode" type="number" maxlength="3" placeholder="Security Code" maxlength="3" required>
+                        </div>
+                    </div>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="expMonth" type="number" maxlength="2" placeholder="MM" required>
+                        </div>
+                    </div>
+                    <div class="w3-row w3-section">
+                    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
+                        <div class="w3-rest">
+                        <input class="w3-input w3-border" formControlName="expYear" type="number" maxlength="4" placeholder="YYYY" required>
+                        </div>
+                    </div> 
+                </div>
+                <!-- order review -->
+                <!-- <div class="orderReview">
+                    <h3>Order Review</h3>
+                    <span>Total Number of Items:  {{totalQty}}</span>
+                    <p>Shipping:               {{ shipping | currency: 'USD'}}</p>
+                    <p>Total Purchase:         {{ totalPrice + shipping | currency: 'USD'}}</p>
+                </div> -->
+
+                <div>
+                    <button class="w3-button btn-info w3-block w3-section w3-ripple w3-padding" type="submit">Purchase</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

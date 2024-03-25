@@ -14,6 +14,8 @@ import { ProductDetailsComponent } from './component/product-details/product-det
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartStatusComponent } from './component/cart-status/cart-status.component';
 import { CartDetailsComponent } from './component/cart-details/cart-details.component';
+import { CheckoutComponent } from './component/checkout/checkout.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { CartDetailsComponent } from './component/cart-details/cart-details.comp
     SearchComponent,
     ProductDetailsComponent,
     CartStatusComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { CartDetailsComponent } from './component/cart-details/cart-details.comp
     AppRoutingModule,
     RouterModule,
     CommonModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
