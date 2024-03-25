@@ -24,10 +24,10 @@ public class Cart {
 
     @Column(name = "order_tracking_number")
     private String orderTrackingNumber;
-    @Column(name = "package_price")
-    private BigDecimal package_price;
-    @Column(name = "party_size")
-    private int party_size;
+    @Column(name = "unit_price")
+    private BigDecimal unit_price;
+    @Column(name = "quantity")
+    private int quantity;
 
     @Enumerated(EnumType.STRING)
     private StatusType status;

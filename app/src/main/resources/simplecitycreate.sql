@@ -1,14 +1,6 @@
 DROP DATABASE IF EXISTS `simple-city-app`;
 CREATE DATABASE `simple-city-app`;
 USE `simple-city-app`;
-DROP TABLE IF EXISTS `countries`;
-CREATE TABLE `countries` (
-    `country_id` bigint NOT NULL AUTO_INCREMENT,
-    `country` varchar(255) DEFAULT NULL,
-    `create_date` datetime(6) DEFAULT NULL,
-    `last_update` datetime(6) DEFAULT NULL,
-    PRIMARY KEY (`country_id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers` (
     `customer_id` bigint NOT NULL AUTO_INCREMENT,
@@ -24,8 +16,8 @@ CREATE TABLE `customers` (
 DROP TABLE IF EXISTS `carts`;
 CREATE TABLE `carts` (
     `cart_id` bigint NOT NULL AUTO_INCREMENT,
-    `package_price` decimal(19, 2) DEFAULT NULL,
-    `party_size` int DEFAULT NULL,
+    `quantity` integer DEFAULT NULL,
+    `unit_price` decimal(19, 2) DEFAULT NULL,
     `status` ENUM ('pending', 'ordered', 'canceled'),
     `order_tracking_number` varchar(255) DEFAULT NULL,
     `create_date` datetime(6) DEFAULT NULL,
@@ -82,10 +74,7 @@ VALUES (1, '5479482JK849BV', 'High Waist Distressed Jeans', 'Hot button-up high 
 		(6, '700Y6293POU98', 'High Cut Jeans', 'High waisted distressed light blue Jeans',26.00, 'assets/images/products/High_Cut_Jeans.png',1,25,NOW(), NOW(),1),
 		(7, '536732YUD0932', 'Customed Onesies', 'Personalized baby onesies',28.00, 'assets/images/products/Personalized_Onesie.png',1,50,NOW(), NOW(),1),
 		(8, '536092YUD0932', 'Freedom T-shirt', 'What is freedom T-Shirt in black',35.00, 'assets/images/products/Freedom_T-shirt.png',1,50,NOW(), NOW(),1);
-INSERT INTO `simple-city-app`.countries
-VALUES (1, 'U.S', NOW(), NOW()),
-    (2, 'UK', NOW(), NOW()),
-    (3, 'Canada', NOW(), NOW());
+
 INSERT INTO `simple-city-app`.customers
 VALUES (
         1,
