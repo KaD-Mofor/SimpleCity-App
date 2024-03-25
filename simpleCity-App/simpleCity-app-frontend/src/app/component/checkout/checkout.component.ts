@@ -19,32 +19,30 @@ export class CheckoutComponent implements OnInit{
     
     this.checkoutFormGroup = this.formBuilder.group({
       customer: this.formBuilder.group({
-        firstName: new FormControl('', [Validators.required, Validators.minLength(2), this.noWhitespaceValidator]),
-        lastName: new FormControl('', [Validators.required, Validators.minLength(2), this.noWhitespaceValidator]),
+        firstName: new FormControl('', [Validators.required, Validators.minLength(2), this.noWhitespaceValidator, Validators.pattern("[a-zA-Z-' ]*")]),
+        lastName: new FormControl('', [Validators.required, Validators.minLength(2), this.noWhitespaceValidator, Validators.pattern("[a-zA-Z-' ]*")]),
         email: new FormControl('', 
                 [Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'), this.noWhitespaceValidator]),
-        phone: new FormControl('', [Validators.pattern('^\\(?([0-9]{3})\\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$')])
+        phone: new FormControl('', [Validators.required, Validators.pattern('^\\(?([0-9]{3})\\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$'), this.noWhitespaceValidator])
       }),
       shippingAddress: this.formBuilder.group({
         street: new FormControl('', [Validators.required, Validators.minLength(5), this.noWhitespaceValidator]),
-        city: new FormControl('', [Validators.required, Validators.minLength(5), this.noWhitespaceValidator]),
-        state: new FormControl('', [Validators.required, Validators.minLength(2), this.noWhitespaceValidator]),
-        country: new FormControl('', [Validators.required, Validators.minLength(2), this.noWhitespaceValidator]),
+        city: new FormControl('', [Validators.required, Validators.minLength(5), this.noWhitespaceValidator, Validators.pattern("[a-zA-Z-' ]*")]),
+        state: new FormControl('', [Validators.required, Validators.minLength(2), this.noWhitespaceValidator, Validators.pattern("[a-zA-Z-' ]*")]),
+        country: new FormControl('', [Validators.required, Validators.minLength(2), this.noWhitespaceValidator, Validators.pattern("[a-zA-Z-' ]*")]),
         zipCode: new FormControl('', [Validators.required, Validators.pattern('^\\d{5}$'), this.noWhitespaceValidator])
       }),
       billingAddress: this.formBuilder.group({
         street: new FormControl('', [Validators.required, Validators.minLength(5), this.noWhitespaceValidator]),
-        city: new FormControl('', [Validators.required, Validators.minLength(5), this.noWhitespaceValidator]),
-        state: new FormControl('', [Validators.required, Validators.minLength(2), this.noWhitespaceValidator]),
-        country: new FormControl('', [Validators.required, Validators.minLength(2), this.noWhitespaceValidator]),
-        zipCode: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{5}$'), this.noWhitespaceValidator])
+        city: new FormControl('', [Validators.required, Validators.minLength(5), this.noWhitespaceValidator, Validators.pattern("[a-zA-Z-' ]*")]),
+        state: new FormControl('', [Validators.required, Validators.minLength(2), this.noWhitespaceValidator, Validators.pattern("[a-zA-Z-' ]*")]),
+        country: new FormControl('', [Validators.required, Validators.minLength(2), this.noWhitespaceValidator, Validators.pattern("[a-zA-Z-' ]*")]),
+        zipCode: new FormControl('', [Validators.required, Validators.pattern('^\\d{5}$'), this.noWhitespaceValidator])
       }),
       creditCard: this.formBuilder.group({
         cType: new FormControl('', [Validators.required]),        
-        cName: new FormControl('', [Validators.required, Validators.minLength(5), this.noWhitespaceValidator]),
-        cNumber: new FormControl('', [Validators.required, 
-          Validators.pattern('^(?:4[0-9]{12}(?:[0-9]{3})?|[25][1-7][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$'), 
-          this.noWhitespaceValidator]),
+        cName: new FormControl('', [Validators.required, Validators.minLength(5), this.noWhitespaceValidator, Validators.pattern("[a-zA-Z-' ]*")]),
+        cNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{16}$'), this.noWhitespaceValidator]),
         cCode: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{3}$'), this.noWhitespaceValidator]),
         expMonth: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{2}$'), this.noWhitespaceValidator]),
         expYear: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{4}$'), this.noWhitespaceValidator]),

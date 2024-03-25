@@ -10,8 +10,20 @@
                         <input class="w3-input w3-border" formControlName="firstName" type="text" placeholder="First Name" required>
                             <!-- Validation -->
                             <div *ngIf="checkoutFormGroup.get('customer.firstName')?.invalid && (checkoutFormGroup.get('customer.firstName')?.dirty || checkoutFormGroup.get('customer.firstName')?.touched)" class="alert alert-danger mt-1">
-                                <div *ngIf="checkoutFormGroup.get('customer.firstName')?.errors?.['required']">First Name is required.</div>
-                                <div *ngIf="checkoutFormGroup.get('customer.firstName')?.errors?.['minlength']">First Name must be atleast 2 characters long.</div>
+                                <!-- <div *ngIf="checkoutFormGroup.get('customer.firstName')?.errors?.['required']">First Name is required.</div>
+                                <div *ngIf="checkoutFormGroup.get('customer.firstName')?.errors?.['minlength'] 
+                                    || checkoutFormGroup.get('customer.firstName')?.errors?.['whitespace'] 
+                                    || checkoutFormGroup.get('customer.firstName')?.errors?.['pattern']">First Name must be atleast 2 characters long.</div> -->
+                                    <div *ngIf="checkoutFormGroup.get('customer.firstName')?.hasError('required')">
+                                        First Name is required.
+                                    </div>
+                                    <div *ngIf="checkoutFormGroup.get('customer.firstName')?.hasError('minlength') 
+                                    || checkoutFormGroup.get('customer.firstName')?.errors?.['pattern']">
+                                        First Name must be at least 2 characters long.
+                                    </div>
+                                    <div *ngIf="checkoutFormGroup.get('customer.firstName')?.hasError('whitespace')">
+                                        First Name cannot be empty or contain only whitespace.
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -24,6 +36,10 @@
                             <div *ngIf="customerLastName?.invalid && (customerLastName?.dirty || customerLastName?.touched)" class="alert alert-danger mt-1">
                                 <div *ngIf="customerLastName?.errors?.['required']">Last Name is required</div>
                                 <div *ngIf="customerLastName?.errors?.['minlength']">Last Name must be atleast 2 characters long</div>
+                                <div *ngIf="checkoutFormGroup.get('customer.lastName')?.hasError('whitespace')">
+                                    Last Name cannot be empty or contain only whitespace.
+                                </div>
+                                <div *ngIf="customerLastName?.errors?.['pattern']">Last Name cannot numbers.</div>
                             </div>
                         </div>
                     </div>
@@ -47,7 +63,10 @@
                             type="tel" placeholder="(333) 444-5555">
                             <!-- Validation -->
                             <div *ngIf="customerPhone?.invalid && (customerPhone?.dirty || customerPhone?.touched)" class="alert alert-danger mt-1">
-                                <div *ngIf="customerPhone?.errors?.['pattern']">Enter phone number like (333) 444-5555</div>
+                                <div *ngIf="customerPhone?.errors?.['pattern']">Enter your 10 digit phone number</div>
+                                <div *ngIf="checkoutFormGroup.get('customer.phone')?.hasError('whitespace')">
+                                    Phone number cannot be empty or contain only whitespace.
+                                </div>
                             </div>
                         </div>       
                     </div> 
@@ -63,6 +82,9 @@
                             <div *ngIf="street?.invalid && (street?.dirty || street?.touched)" class="alert alert-danger mt-1">
                                 <div *ngIf="street?.errors?.['required']">Street address is required</div>
                                 <div *ngIf="street?.errors?.['minlength']">Street address must be atleast 5 characters long</div>
+                                <div *ngIf="checkoutFormGroup.get('shippingAddress.street')?.hasError('whitespace')">
+                                    Street address cannot be empty or contain only whitespace.
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -74,6 +96,10 @@
                         <div *ngIf="city?.invalid && (city?.dirty || city?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="city?.errors?.['required']">City address is required</div>
                             <div *ngIf="city?.errors?.['minlength']">City address must be atleast 5 characters long</div>
+                            <div *ngIf="checkoutFormGroup.get('shippingAddress.city')?.hasError('whitespace')">
+                                City cannot be empty or contain only whitespace.
+                            </div>
+                            <div *ngIf="city?.errors?.['pattern']">City cannot numbers.</div>
                         </div>
                         </div>
                     </div>
@@ -85,6 +111,10 @@
                         <div *ngIf="state?.invalid && (state?.dirty || state?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="state?.errors?.['required']">State address is required</div>
                             <div *ngIf="state?.errors?.['minlength']">State address must be atleast 2 characters long</div>
+                            <div *ngIf="checkoutFormGroup.get('shippingAddress.state')?.hasError('whitespace')">
+                                State address cannot be empty or contain only whitespace.
+                            </div>
+                            <div *ngIf="state?.errors?.['pattern']">State cannot numbers.</div>
                         </div>
                         </div>
                     </div>
@@ -96,6 +126,10 @@
                         <div *ngIf="country?.invalid && (country?.dirty || country?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="country?.errors?.['required']">Country is required</div>
                             <div *ngIf="country?.errors?.['minlength']">Country must be atleast 2 characters long</div>
+                            <div *ngIf="checkoutFormGroup.get('shippingAddress.country')?.hasError('whitespace')">
+                                Country cannot be empty or contain only whitespace.
+                            </div>
+                            <div *ngIf="country?.errors?.['pattern']">Country cannot numbers.</div>
                         </div>
                         </div>
                     </div>
@@ -107,6 +141,9 @@
                         <div *ngIf="zipCode?.invalid && (zipCode?.dirty || zipCode?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="zipCode?.errors?.['required']">zipCode is required</div>
                             <div *ngIf="zipCode?.errors?.['pattern']">zipCode should be 5 characters long</div>
+                            <!-- <div *ngIf="checkoutFormGroup.get('shippingAddress.zipCode')?.hasError('whitespace')">
+                                Zip Code cannot be empty or contain only whitespace.
+                            </div> -->
                         </div>
                         </div>
                     </div>
@@ -131,6 +168,9 @@
                         <div *ngIf="bstreet?.invalid && (bstreet?.dirty || bstreet?.touched)" class="alert alert-danger mt-1">
                             <div *ngIf="bstreet?.errors?.['required']">Street address is required</div>
                             <div *ngIf="bstreet?.errors?.['minlength']">Street address must be atleast 5 characters long</div>
+                            <div *ngIf="checkoutFormGroup.get('billingAddress.bstreet')?.hasError('whitespace')">
+                                Street address cannot be empty or contain only whitespace.
+                            </div>
                         </div>
                         </div>
                     </div>
@@ -142,6 +182,10 @@
                             <div *ngIf="bcity?.invalid && (bcity?.dirty || bcity?.touched)" class="alert alert-danger mt-1">
                                 <div *ngIf="bcity?.errors?.['required']">City address is required</div>
                                 <div *ngIf="bcity?.errors?.['minlength']">City address must be atleast 5 characters long</div>
+                                <div *ngIf="checkoutFormGroup.get('billingAddress.bcity')?.hasError('whitespace')">
+                                    City cannot be empty or contain only whitespace.
+                                </div>
+                                <div *ngIf="bcity?.errors?.['pattern']">City cannot numbers.</div>
                             </div>
                             </div>
                         </div>
@@ -153,6 +197,10 @@
                             <div *ngIf="bstate?.invalid && (bstate?.dirty || bstate?.touched)" class="alert alert-danger mt-1">
                                 <div *ngIf="bstate?.errors?.['required']">State address is required</div>
                                 <div *ngIf="bstate?.errors?.['minlength']">State address must be atleast 2 characters long</div>
+                                <div *ngIf="checkoutFormGroup.get('billingAddress.bstate')?.hasError('whitespace')">
+                                    State cannot be empty or contain only whitespace.
+                                </div>
+                                <div *ngIf="bstate?.errors?.['pattern']">State cannot numbers.</div>
                             </div>
                             </div>
                         </div>
@@ -164,6 +212,10 @@
                             <div *ngIf="bcountry?.invalid && (bcountry?.dirty || bcountry?.touched)" class="alert alert-danger mt-1">
                                 <div *ngIf="bcountry?.errors?.['required']">Country is required</div>
                                 <div *ngIf="bcountry?.errors?.['minlength']">Country must be atleast 2 characters long</div>
+                                <div *ngIf="checkoutFormGroup.get('billingAddress.country')?.hasError('whitespace')">
+                                    Country cannot be empty or contain only whitespace.
+                                </div>
+                                <div *ngIf="bcountry?.errors?.['pattern']">Country cannot numbers.</div>
                             </div>
                             </div>
                         </div>
@@ -180,7 +232,7 @@
                     </div>
                 </div>
                 <!-- credit card -->
-                <div formGroupName="billingAddress" class="form-area">
+                <div formGroupName="creditCard" class="form-area">
                     <h3>Credit Card</h3>
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
@@ -201,22 +253,23 @@
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="cNumber" type="number" placeholder="Card number" required>
+                        <input class="w3-input w3-border" formControlName="cName" type="text" placeholder="Name on card" required>
                         <!-- Validation -->
-                        <div *ngIf="cNumber?.invalid && (cNumber?.dirty || cNumber?.touched)" class="alert alert-danger mt-1">
-                            <div *ngIf="cNumber?.errors?.['required']">Card Number is required</div>
-                            <div *ngIf="cNumber?.errors?.['pattern']">card Number must be as on your card.</div>
-                        </div>
+                            <div *ngIf="cName?.invalid && (cName?.dirty || cName?.touched)" class="alert alert-danger mt-1">
+                                <div *ngIf="cName?.errors?.['required']">Enter the name on your card</div>
+                                <div *ngIf="cName?.errors?.['minlength']">Name on card must be atleast 5 characters long</div>
+                                <div *ngIf="cName?.errors?.['pattern']">Card Name cannot numbers.</div>
+                            </div>
                         </div>
                     </div>
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-credit-card"></i></div>
                         <div class="w3-rest">
-                        <input class="w3-input w3-border" formControlName="cName" type="text" placeholder="Name on card" required>
+                        <input class="w3-input w3-border" formControlName="cNumber" type="number" placeholder="Card number" required>
                         <!-- Validation -->
-                        <div *ngIf="cName?.invalid && (cName?.dirty || cName?.touched)" class="alert alert-danger mt-1">
-                            <div *ngIf="cName?.errors?.['required']">Enter the name on your card</div>
-                            <div *ngIf="cName?.errors?.['minlength']">Name on card must be atleast 5 characters long</div>
+                        <div *ngIf="cNumber?.invalid && (cNumber?.dirty || cNumber?.touched)" class="alert alert-danger mt-1">
+                            <div *ngIf="cNumber?.errors?.['required']">Card Number is required</div>
+                            <div *ngIf="cNumber?.errors?.['pattern']">card Number must be as on your card.</div>
                         </div>
                         </div>
                     </div>
