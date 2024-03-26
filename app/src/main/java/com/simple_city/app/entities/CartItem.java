@@ -21,15 +21,18 @@ public class CartItem {
     @Column(name = "cart_item_id")
     private Long id;
 
-    @Column(name = "create_date")
-    private Timestamp createDate;
+    @Column(name = "image_url")
+    private String imageUrl;
 
-    @Column(name = "last_update")
-    private Timestamp lastUpdate;
+    @Column(name = "quantity")
+    private int qty;
 
-   // @ManyToOne(fetch = FetchType.LAZY)
-   // @JoinColumn(name = "product_id")
-   // private Product product;
+    @Column(name = "unit_price")
+    private int price;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")

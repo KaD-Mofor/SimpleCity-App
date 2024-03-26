@@ -24,19 +24,19 @@ public class Customer {
 
     @NotBlank(message = "First name is required")
     @Size(min = 2, max = 50, message = "First name must be between 2 and 50 characters")
-    @Column(name = "customer_first_name")
+    @Column(name = "first_name")
     @Size(min = 2, max = 50)
     private String firstName;
 
     @NotBlank(message = "Last name is required")
     @Size(min = 2, max = 50, message = "Last name must be between 2 and 50 characters")
-    @Column(name = "customer_last_name")
+    @Column(name = "last_name")
     @Size(min = 2, max = 50)
     private String lastName;
-    @Column(name = "address")
-    private String address;
-    @Column(name = "postal_code")
-    private String postal_code;
+
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "phone")
     private String phone;
 
@@ -62,12 +62,11 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private Set<Cart> carts;
 
-    public Customer(String address, String firstName, String lastName, String phone, String postalCode) {
-        this.address = address;
+    public Customer(String email, String firstName, String lastName, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
         this.phone = phone;
-        this.postal_code = postalCode;
     }
 
 }

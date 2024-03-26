@@ -22,15 +22,25 @@ public class Cart {
     @Column(name = "cart_id")
     private Long id;
 
-    @Column(name = "order_tracking_number")
-    private String orderTrackingNumber;
-    @Column(name = "unit_price")
-    private BigDecimal unit_price;
-    @Column(name = "quantity")
-    private int quantity;
+    @Column(name = "total_quantity")
+    private int total_quantity;
+
+    @Column(name = "total_price")
+    private BigDecimal total_price;
 
     @Enumerated(EnumType.STRING)
     private StatusType status;
+
+    @Column(name = "order_tracking_number")
+    private String orderTrackingNumber;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "address_id")
+    private Customer address;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
@@ -39,10 +49,6 @@ public class Cart {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_update")
     private Date last_update;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
 
     @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<CartItem> cartItems;
