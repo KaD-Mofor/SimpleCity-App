@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { CartService } from '../../service/cart.service';
 
 @Component({
   selector: 'app-checkout',
@@ -9,11 +10,10 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors,
 export class CheckoutComponent implements OnInit{
 
   checkoutFormGroup!: FormGroup;
-  // totalPrice: number = 0;
-  // totalQty: number = 0;
-  // shipping: number = this.totalPrice * 0.05;
+  totalPrice: number = 0;
+  totalQty: number = 0;
 
-  constructor(private formBuilder: FormBuilder){}
+  constructor(private formBuilder: FormBuilder, private cartService: CartService){}
 
   ngOnInit(): void {
     
@@ -49,7 +49,17 @@ export class CheckoutComponent implements OnInit{
       })
     });
 
+    this.reviewCartTotals();
     
+  }
+
+  reviewCartTotals() {
+    this.cartService.totalQty.subscribe(
+      totalQty => this.totalQty = totalQty
+    );
+    this.cartService.totalPrice.subscribe(
+      totalPrice => this.totalPrice = totalPrice
+    );
   }
 
   onSubmit(){

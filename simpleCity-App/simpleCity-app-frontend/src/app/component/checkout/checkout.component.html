@@ -149,16 +149,15 @@
                     
                 </div>
 
-                <div class="copyAddress">
+                <div class="copyAddress w3-text-black mb-1">
                     <label class="addr-checkbox">
                         <input type="checkbox" (change)="sameAsShoppingAddress($event)">
                         <span class="addr-checkbox"> Same as Shopping address</span>
                     </label>
-
                 </div>
                 <!-- billing address -->
                 <div formGroupName="billingAddress" class="form-area">
-                    <h3>Billing Address</h3>
+                    <h3 class=" w3-center mt-2">Billing Address</h3>
                     <div class="w3-row w3-section">
                     <div class="w3-col" style="width:50px"></div>
                         <div class="w3-rest">
@@ -307,12 +306,13 @@
                     </div> 
                 </div>
                 <!-- order review -->
-                <!-- <div class="orderReview">
+                <div class="orderReview w3-text-black">
                     <h3>Order Review</h3>
                     <span>Total Number of Items:  {{totalQty}}</span>
-                    <p>Shipping:               {{ shipping | currency: 'USD'}}</p>
-                    <p>Total Purchase:         {{ totalPrice + shipping | currency: 'USD'}}</p>
-                </div> -->
+                    <p>Shipping:               {{ (totalPrice * 0.05) | currency: 'USD'}}</p>
+                    <p>Total Purchase:         {{ totalPrice + (totalPrice * 0.05) | currency: 'USD'}}</p>
+
+                </div>
 
                 <div>
                     <button class="w3-button btn-info w3-block w3-section w3-ripple w3-padding" type="submit">Purchase</button>
