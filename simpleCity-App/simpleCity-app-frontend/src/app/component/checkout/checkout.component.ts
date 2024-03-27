@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { CartService } from '../../service/cart.service';
+import { CheckoutService } from '../../service/checkout.service';
+import { Router } from '@angular/router';
+import { Cart } from '../../common/cart';
+import { CartItemItem } from '../../common/cart-item-item';
+import { Purchase } from '../../common/purchase';
+import { State } from '@popperjs/core';
 
 @Component({
   selector: 'app-checkout',
@@ -13,7 +19,10 @@ export class CheckoutComponent implements OnInit{
   totalPrice: number = 0;
   totalQty: number = 0;
 
-  constructor(private formBuilder: FormBuilder, private cartService: CartService){}
+  constructor(private formBuilder: FormBuilder, 
+              private cartService: CartService,
+              private checkoutService: CheckoutService,
+              private router: Router){}
 
   ngOnInit(): void {
     
@@ -66,11 +75,79 @@ export class CheckoutComponent implements OnInit{
 
     if (this.checkoutFormGroup.invalid){
       this.checkoutFormGroup.markAllAsTouched();
+      return;
     }
 
     console.log("Submit button: ");
     console.log(this.checkoutFormGroup.get('customer')?.value);
     console.log(this.checkoutFormGroup.get('shippingAddress')?.value);
+
+    //set up cart
+    let order = new Cart();
+    order.totalPrice = this.totalPrice;
+    order.totalQuantity = this.totalQty;
+
+    //get cart items
+    const cartItems = this.cartService.cartItems;
+
+    //create orderitems from cartItems
+        //older method
+    // let orderItems: CartItemItem[] = [];
+    // for (let i=0; i < cartItems.length; i++) {
+    //   orderItems[i] = new CartItemItem(cartItems[i]);
+    // } 
+
+        //using map to do above task
+    let orderItems: CartItemItem[] = cartItems.map(i => new CartItemItem(i));
+
+    //set up purcahse
+    let purchase = new Purchase();
+
+    //populate customer
+    purchase.customer = this.checkoutFormGroup.controls['customer'].value;
+
+    //populate address
+    purchase.address = this.checkoutFormGroup.controls['shippingAddress'].value;
+
+          //if above fails, run the indepth method
+    // purchase.address.street = this.checkoutFormGroup.controls['shippingAddress.street'].value;
+    // purchase.address.state = this.checkoutFormGroup.controls['shippingAddress.state'].value;
+    // purchase.address.city = this.checkoutFormGroup.controls['shippingAddress.city'].value;
+    // purchase.address.country = this.checkoutFormGroup.controls['shippingAddress.country'].value;
+    // purchase.address.zipCode = this.checkoutFormGroup.controls['shippingAddress.zipCode'].value;
+
+    //populate cart/order and orderItems/cartItems
+    purchase.cart = order;
+    purchase.cartItemItems = orderItems;
+
+    //call the REST API by checkoutService
+    this.checkoutService.placeOrder(purchase).subscribe({ 
+        next: response => {
+          alert(`Your order has been received. \nYour Order tracking number is ${response.orderTrackingNumber}`);
+
+          //reset cart
+          this.resetCart();
+
+        },
+        error: err => {
+          alert(`There was an error: ${err.message}`);
+        }
+      }
+    );
+
+  }
+
+  resetCart() {
+    //reset cart data
+    this.cartService.cartItems =[];
+    this.cartService.totalPrice.next(0);
+    this.cartService.totalQty.next(0);
+    //reset form
+    this.checkoutFormGroup.reset();
+
+    //go back to products page
+    this.router.navigateByUrl("/products");
+
   }
 
   get customerFirstName() {return this.checkoutFormGroup.get('customer.firstName')};
