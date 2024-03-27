@@ -39,6 +39,7 @@ public class RestDataConfig implements RepositoryRestConfigurer {
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
 //        config.exposeIdsFor(Product.class);
 //        config.exposeIdsFor(ProductCategory.class);
+        config.exposeIdsFor(Address.class);
         config.exposeIdsFor(Customer.class);
         config.setDefaultPageSize(Integer.MAX_VALUE);
         config.setMaxPageSize(Integer.MAX_VALUE);

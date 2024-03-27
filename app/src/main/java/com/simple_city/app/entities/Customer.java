@@ -1,37 +1,26 @@
 package com.simple_city.app.entities;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
 @Table(name = "customers")
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
+    @Column(name = "id")
     private Long id;
 
-    @NotBlank(message = "First name is required")
-    @Size(min = 2, max = 50, message = "First name must be between 2 and 50 characters")
     @Column(name = "first_name")
-    @Size(min = 2, max = 50)
     private String firstName;
 
-    @NotBlank(message = "Last name is required")
-    @Size(min = 2, max = 50, message = "Last name must be between 2 and 50 characters")
     @Column(name = "last_name")
-    @Size(min = 2, max = 50)
     private String lastName;
 
     @Column(name = "email")
@@ -44,29 +33,32 @@ public class Customer {
     @Column(name = "create_date")
     private Date create_date;
 
-//    @PrePersist
-//    public void onCreate(){
-//        this.create_date = new Date();
-//        this.last_update = new Date();
-//    }
+    @PrePersist
+    public void onCreate(){
+        this.create_date = new Date();
+        this.last_update = new Date();
+    }
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_update")
     private Date last_update;
 
-//    @PreUpdate
-//    public void onUpdate(){
-//        this.last_update = new Date();
-//    }
+    @PreUpdate
+    public void onUpdate(){
+        this.last_update = new Date();
+    }
 
-    @OneToMany(mappedBy = "customer")
-    private Set<Cart> carts;
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Cart> carts = new HashSet<>();
 
-    public Customer(String email, String firstName, String lastName, String phone) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
+    public void add(Cart cart) {
+        if (cart != null) {
+            if (carts == null) {
+                carts = new HashSet<>();
+            }
+            carts.add(cart);
+            cart.setCustomer(this);
+        }
     }
 
 }
