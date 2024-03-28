@@ -8,4 +8,8 @@ public class PurchaseResponse {
 
     @NonNull
     private String orderTrackingNumber;
+
+    public PurchaseResponse(@NonNull String orderTrackingNumber) {
+        this.orderTrackingNumber = orderTrackingNumber;
+    }
 }

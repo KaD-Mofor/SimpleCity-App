@@ -1,145 +1,180 @@
 package com.simple_city.app.service;
 
+import com.simple_city.app.dao.AddressRepository;
+import com.simple_city.app.dao.CartItemRepository;
+import com.simple_city.app.dao.CartRepository;
 import com.simple_city.app.dao.CustomerRepository;
-import com.simple_city.app.dto.*;
-import com.simple_city.app.entities.*;
-import jakarta.transaction.Transactional;
-import lombok.Getter;
-import lombok.Setter;
+import com.simple_city.app.dto.Purchase;
+import com.simple_city.app.dto.PurchaseResponse;
+import com.simple_city.app.entities.Address;
+import com.simple_city.app.entities.Cart;
+import com.simple_city.app.entities.CartItem;
+import com.simple_city.app.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 
-@Getter
-@Setter
 @Service
-public class CheckoutServiceImpl implements CheckoutService{
-    private CustomerRepository customerRepository;
+public class CheckoutServiceImpl implements CheckoutService {
+
+    private final CartRepository cartRepository;
+    private final CustomerRepository customerRepository;
+    private final AddressRepository addressRepository;
+    private final CartItemRepository cartItemRepository;
+    private final CustomerService customerService;
 
     @Autowired
-    public CheckoutServiceImpl(CustomerRepository customerRepository) {
+    public CheckoutServiceImpl(CartRepository cartRepository,
+                               CustomerRepository customerRepository,
+                               AddressRepository addressRepository,
+                               CartItemRepository cartItemRepository, CustomerService customerService) {
+        this.cartRepository = cartRepository;
         this.customerRepository = customerRepository;
+        this.addressRepository = addressRepository;
+        this.cartItemRepository = cartItemRepository;
+        this.customerService = customerService;
     }
 
-//    @Override
-//    @Transactional
-//    public PurchaseResponse placeOrder(Purchase purchase) {
-//        //get cart info from dto
-//        Cart cart = purchase.getCart();
-//
-//        //generate tracking number
-//        String trackingNumber = generateTrackingNumber();
-//        cart.setOrderTrackingNumber(trackingNumber);
-//
-//        //Fill cart with cart items
-//        Set<CartItem> cartItems = purchase.getCartItems();
-//        cartItems.forEach(cart::add);
-//
-//        //populate cart with address
-//        cart.setAddress(purchase.getAddress());
-//
-//        //populate customer with cart
-//        Customer customer = purchase.getCustomer();
-//        customer.add(cart);
-//
-//        //save to the db
-//        customerRepository.save(customer);
-//
-//        //return response
-//        return new PurchaseResponse(trackingNumber);
-//    }
+    @Override
+    public PurchaseResponse placeOrder(Purchase purchase) {
 
-//    @Override
-//    @Transactional
-//    public PurchaseResponse placeOrder(Purchase purchase) {
-//        //get cart info from dto
-//        Cart cart = purchase.getCart();
-//
-//        // Check if cart is null
-//        if (cart == null) {
-//            throw new IllegalArgumentException("Cart cannot be null");
-//        }
-//
-//        //generate tracking number
-//        String trackingNumber = generateTrackingNumber();
-//        cart.setOrderTrackingNumber(trackingNumber);
-//
-//        //Fill cart with cart items
+        String orderTrackingNumber = generateTrackingNumber();
+
+        // Set the tracking number to the purchase response
+        PurchaseResponse purchaseResponse = new PurchaseResponse(orderTrackingNumber);
+        purchaseResponse.setOrderTrackingNumber(orderTrackingNumber);
+
+        // Get cart info from dto
+        Cart cart = purchase.getCart();
+
+        // Generate a tracking number
+        cart.setOrderTrackingNumber(orderTrackingNumber);
+
+        //---------------------------------------------------------
+
+//        // Fill the cart with cartItems
 //        Set<CartItem> cartItems = purchase.getCartItems();
 //        if (cartItems != null) {
-//            cartItems.forEach(item -> cart.add(item));
+//            cart.setCartItems(cartItems);
+//            for (CartItem cartItem : cartItems) {
+//                cartItem.setCart(cart);
+//            }
 //        }
 //
-//        //populate cart with address
-//        cart.setAddress(purchase.getAddress());
+//        // Populate the cart with the customer's address
+//        Address address = purchase.getAddress();
+//        if (address != null) {
+//            // Save the address first
+//            address = addressRepository.save(address);
+//            cart.setAddress(address);
+//        }
 //
-//        //populate customer with cart
+//        // Populate the customer with the cart
 //        Customer customer = purchase.getCustomer();
 //        if (customer != null) {
+//            // Save the customer first
+//            customer = customerRepository.save(customer);
 //            customer.add(cart);
 //        }
 //
-//        //save to the db
-//        assert customer != null;
-//        customerRepository.save(customer);
+//        // Save to the database
+//        cartRepository.save(cart);
+       // -----------------------------------------------------------------------
+
+
+//        // Populate the customer with the cart
+//        Customer customer = purchase.getCustomer();
+//        if (customer != null) {
+//            // Save the customer first
+//            customer = customerRepository.save(customer);
+//            customer.add(cart);
+//        }
 //
-//        //return response
-//        return new PurchaseResponse(trackingNumber);
-//    }
+//        // Populate the cart with the customer's address
+//        Address address = purchase.getAddress();
+//        if (address != null) {
+//            // Save the address first
+//            address = addressRepository.save(address);
+//            cart.setAddress(address);
+//        }
+//
+//        // Save the cart
+//        cart = cartRepository.save(cart);
+//
+//        // Fill the cart with cartItems
+//        Set<CartItem> cartItems = purchase.getCartItems();
+//        if (cartItems != null) {
+//            for (CartItem cartItem : cartItems) {
+//                // Set the association to the cart
+//                cartItem.setCart(cart);
+//                // Save each cart item
+//                cartItemRepository.save(cartItem);
+//            }
+//            // Set cart items in the cart
+//            cart.setCartItems(cartItems);
+//        }
+//
+//        // Update the saved cart with its items
+//        cart = cartRepository.save(cart);
 
 
-    @Override
-    @Transactional
-    public PurchaseResponse placeOrder(Purchase purchase) {
-        // Get cart info from DTO
-        Cart cart = purchase.getCart();
-
-        // Check if cart is null
-        if (cart == null) {
-            throw new IllegalArgumentException("Cart cannot be null");
-        }
-
-        // Generate tracking number
-        String trackingNumber = generateTrackingNumber();
-        cart.setOrderTrackingNumber(trackingNumber);
-
-        // Fill cart with cart items
-        Set<CartItem> cartItems = purchase.getCartItems();
-        if (cartItems != null) {
-            cartItems.forEach(item -> cart.add(item));
-        }
-
-        // Populate cart with address
-        Address address = purchase.getAddress();
-        if (address == null) {
-            throw new IllegalArgumentException("Address cannot be null");
-        }
-
-        // Associate the address with the cart
-        cart.setAddress(address);
-
-        // Populate customer with cart
+        // Populate the customer with the cart
         Customer customer = purchase.getCustomer();
         if (customer != null) {
+            // Check if customer already exists
+            Customer existingCustomerEmail = customerService.checkExistingCustomerEmail(customer.getEmail());
+            //Customer existingCustomerNames = customerService.checkExistingCustomerByNames(customer.getFirstName(), customer.getLastName());
+            if (existingCustomerEmail != null //&& existingCustomerNames != null
+            ) {
+                //@TODO Update the logic to prompt the customer to update their email or names if either exists and the other has changed.
+                // If customer exists, update last_update timestamp
+                customerService.updateLastUpdate(existingCustomerEmail);
+                customer = existingCustomerEmail;
+            } else {
+                // If customer does not exist, save the new customer
+                customer = customerService.save(customer);
+            }
+            // Associate the cart with the customer
             customer.add(cart);
         }
 
-        // Associate the customer with the cart
-        customer.add(cart);
+        // Populate the cart with the customer's address
+        Address address = purchase.getAddress();
+        if (address != null) {
+            // Save the address first
+            address = addressRepository.save(address);
+            cart.setAddress(address);
+        }
 
-        // Save to the DB
-        customerRepository.save(customer);
+        // Save the cart
+        cart = cartRepository.save(cart);
 
-        // Return response
-        return new PurchaseResponse(trackingNumber);
+        // Fill the cart with cartItems
+        Set<CartItem> cartItems = purchase.getCartItems();
+        if (cartItems != null) {
+            for (CartItem cartItem : cartItems) {
+                // Set the association to the cart
+                cartItem.setCart(cart);
+                // Save each cart item
+                cartItemRepository.save(cartItem);
+            }
+            // Set cart items in the cart
+            cart.setCartItems(cartItems);
+        }
+
+        // Update the saved cart with its items
+        cart = cartRepository.save(cart);
+
+
+        return purchaseResponse;
     }
 
 
     private String generateTrackingNumber() {
-        //Generate a random UUID number (UUID version-4) as trackingNumber.
-
-        return "SIMPLE-" + UUID.randomUUID().toString();
+        // Generate a tracking number logic here
+        return "SIMPLE--" + UUID.randomUUID().toString();
     }
 }

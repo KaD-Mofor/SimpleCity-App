@@ -11,8 +11,6 @@ import java.sql.Timestamp;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "cart_items")
 @CrossOrigin(origins = "http://localhost:4200")
 public class CartItem {
@@ -25,14 +23,16 @@ public class CartItem {
     private String imageUrl;
 
     @Column(name = "quantity")
-    private int qty;
+    private int quantity;
 
     @Column(name = "unit_price")
-    private int price;
+    private int unitPrice;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private Product product;
+//    @ManyToOne
+//    @JoinColumn(name = "product_id", nullable = false)
+//    private Product product;
+    @Column(name = "product_id")
+    private Long productId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cart_id")
