@@ -16,8 +16,8 @@ import { State } from '@popperjs/core';
 export class CheckoutComponent implements OnInit{
 
   checkoutFormGroup!: FormGroup;
-  totalPrice: number = 0;
-  totalQty: number = 0;
+  totalPrice!: number;
+  totalQty!: number;
 
   constructor(private formBuilder: FormBuilder, 
               private cartService: CartService,
