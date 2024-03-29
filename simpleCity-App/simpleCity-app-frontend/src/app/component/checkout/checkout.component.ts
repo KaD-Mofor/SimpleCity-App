@@ -92,13 +92,14 @@ export class CheckoutComponent implements OnInit{
 
     //create orderitems from cartItems
         //older method
-    // let orderItems: CartItemItem[] = [];
-    // for (let i=0; i < cartItems.length; i++) {
-    //   orderItems[i] = new CartItemItem(cartItems[i]);
-    // } 
+    let orderItems: CartItemItem[] = [];
+    for (let i = 0; i < cartItems.length; i++) {
+      const { imageUrl, quantity, unitPrice, id } = cartItems[i];
+      orderItems.push(new CartItemItem(imageUrl, quantity, unitPrice, id.toString()));
+    }
 
-        //using map to do above task
-    let orderItems: CartItemItem[] = cartItems.map(i => new CartItemItem(i));
+        //new method
+    // let orderItems: CartItemItem[] = cartItems.map(i => new CartItemItem(i));
 
     //set up purcahse
     let purchase = new Purchase();
@@ -108,13 +109,6 @@ export class CheckoutComponent implements OnInit{
 
     //populate address
     purchase.address = this.checkoutFormGroup.controls['shippingAddress'].value;
-
-          //if above fails, run the indepth method
-    // purchase.address.street = this.checkoutFormGroup.controls['shippingAddress.street'].value;
-    // purchase.address.state = this.checkoutFormGroup.controls['shippingAddress.state'].value;
-    // purchase.address.city = this.checkoutFormGroup.controls['shippingAddress.city'].value;
-    // purchase.address.country = this.checkoutFormGroup.controls['shippingAddress.country'].value;
-    // purchase.address.zipCode = this.checkoutFormGroup.controls['shippingAddress.zipCode'].value;
 
     //populate cart/order and orderItems/cartItems
     purchase.cart = order;

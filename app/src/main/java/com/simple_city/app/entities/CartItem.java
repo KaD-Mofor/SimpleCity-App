@@ -31,7 +31,7 @@ public class CartItem {
 //    @ManyToOne
 //    @JoinColumn(name = "product_id", nullable = false)
 //    private Product product;
-    @Column(name = "product_id")
+    @Column(name = "product_id")   //@TODO check if product id is cast as a different type in the project
     private Long productId;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -5,17 +5,17 @@ export class CartItemItem {
     imageUrl: string;
     quantity: number;
     unitPrice: number;
-    productId: number; //change number to string
+    productId: string; 
 
-    constructor(cartItem: CartItem) {
-         this.imageUrl = cartItem.imageUrl;
-         this.quantity = cartItem.quantity;
-         this.unitPrice = cartItem.unitPrice;
-         this.productId = cartItem.id;
-    }
+    constructor(imageUrl: string, quantity: number, unitPrice: number, productId: string) {
+        this.imageUrl = imageUrl;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.productId = productId;
+   }
 
-    // constructor(public imageUrl: string,
-    //     public unitPrice: number,
-    //     public quantity: number,
-    //     public productId: string) { }
+//     constructor(public imageUrl: string,
+//         public unitPrice: number,
+//         public quantity: number,
+//         public productId: string) { }
 }
