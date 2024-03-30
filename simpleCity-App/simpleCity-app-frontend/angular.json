@@ -38,7 +38,8 @@
               "src/styles.css",
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "node_modules/@okta/okta-signin-widget/dist/css/okta-sign-in.min.css"
             ],
             "scripts": []
           },
@@ -106,6 +107,9 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "cache": {
+      "enabled": false
+    }
   }
 }

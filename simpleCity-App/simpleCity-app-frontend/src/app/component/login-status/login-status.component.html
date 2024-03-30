@@ -1,0 +1,8 @@
+<div class="login-status">
+    <div *ngIf="isAuthenticated && userFullName" class="login-status-usr-info">
+        Welcome back {{userFullName}}!
+    </div>
+
+    <button *ngIf="!isAuthenticated" routerLink="/login" class="nav-link far fa-user-circle rounded" style="font-size: 30px"></button>
+    <button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
+</div>
