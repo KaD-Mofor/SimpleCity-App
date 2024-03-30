@@ -87,6 +87,8 @@ export class CheckoutComponent implements OnInit{
     order.totalPrice = this.totalPrice;
     order.totalQuantity = this.totalQty;
 
+    
+
     //get cart items
     const cartItems = this.cartService.cartItems;
 
@@ -113,6 +115,9 @@ export class CheckoutComponent implements OnInit{
     //populate cart/order and orderItems/cartItems
     purchase.cart = order;
     purchase.cartItemItems = orderItems;
+
+    console.log('Purchase cart:  ===== ', purchase.cart)
+    console.log('Purchase cart items: ===== ', purchase.cartItemItems)
 
     //call the REST API by checkoutService
     this.checkoutService.placeOrder(purchase).subscribe({ 

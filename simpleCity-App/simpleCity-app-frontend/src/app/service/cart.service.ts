@@ -79,7 +79,7 @@ export class CartService {
                   unitPrice=${ci.unitPrice}, runningTotal=${runningTotal}`);
     }
 
-  //   console.log(`totalPrice: ${totalPriceValue.toFixed(2)}, totalQty: ${totalQtyV}`);
-  //   console.log("     *********     ");
+    console.log(`totalPrice: ${totalPriceValue.toFixed(2)}, totalQty: ${totalQtyV}`);
+    console.log("     *********     ");
   }
 }

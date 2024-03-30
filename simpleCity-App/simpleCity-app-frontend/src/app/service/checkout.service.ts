@@ -14,14 +14,16 @@ export class CheckoutService {
 
   placeOrder(purchase: Purchase): Observable<any> {
     // Set totalQuantity and totalPrice of the Cart object
-    purchase.cart.totalQuantity = purchase.cartItemItems.reduce((acc, ci) => acc + ci.quantity, 0);
-    purchase.cart.totalPrice = purchase.cartItemItems.reduce((acc, ci) => acc + ci.quantity * ci.unitPrice, 0);
+    // purchase.cart.totalQuantity = purchase.cartItemItems.reduce((acc, ci) => acc + ci.quantity, 0);
+    // purchase.cart.totalPrice = purchase.cartItemItems.reduce((acc, ci) => acc + ci.quantity * ci.unitPrice, 0);
     
-    console.log(`Total Price: ${purchase.cart.totalPrice.toFixed(2)}, Total Qty: ${purchase.cart.totalQuantity}`);
+    console.log("Purchase From Checkout Service:", purchase);
+    console.log(JSON.stringify(purchase))
     console.log("     *********     ");
   
 
-    return this.httpClient.post<Purchase>(this.purchaseUrl, purchase);
+    // return this.httpClient.post<Purchase>(this.purchaseUrl, purchase);
+    return this.httpClient.post(this.purchaseUrl, purchase);
   }
 
 }
