@@ -9,10 +9,26 @@ export class CartService {
 
   cartItems: CartItem[] = [];
 
+  storage : Storage = sessionStorage;
+
   totalPrice: Subject<number> = new BehaviorSubject<number>(0);
   totalQty: Subject<number> = new BehaviorSubject<number>(0);
 
-  constructor() { }
+  constructor() { 
+    //read data from session storage
+    let data = JSON.parse(this.storage.getItem('cartItems')!);
+
+    //calculate cart total based on stored data
+    if(data != null) {
+      this.cartItems = data;
+      this.calculateCartTotals();
+    }
+  }
+
+  //Session storage
+  persistCartItems(){
+    this.storage.setItem('cartItems', JSON.stringify(this.cartItems));
+  }
 
   addToCart(iCartItem: CartItem) {
     // Find the item in the cart
@@ -30,11 +46,9 @@ export class CartService {
       // Otherwise, add the item to the cart
       this.cartItems.push(iCartItem);
     }
-
-    // Calculate and update the cart totals
     this.calculateCartTotals();
   }
-
+    // Calculate and update the cart totals
   calculateCartTotals() {
     let totalPriceValue: number =0;
     let totalQtyV: number =0;
@@ -50,6 +64,8 @@ export class CartService {
 
     //Debug cart values
     this.cartLog(totalPriceValue, totalQtyV); 
+    //Retrieve cart items in session storage
+    this.persistCartItems();
   }
 
   decrementQty(t: CartItem) {
@@ -72,13 +88,14 @@ export class CartService {
   }
 
   cartLog(totalPriceValue: number, totalQtyV: number) {
-    console.log('Cart status');
+    console.log('Cart status'); //debugging
     for (let ci of this.cartItems) {
       const runningTotal = ci.quantity * ci.unitPrice;
       console.log(`name: ${ci.name}, qty=${ci.quantity}, 
-                  unitPrice=${ci.unitPrice}, runningTotal=${runningTotal}`);
+                  unitPrice=${ci.unitPrice}, runningTotal=${runningTotal}`); //debugging
     }
 
+    //debugging
     console.log(`totalPrice: ${totalPriceValue.toFixed(2)}, totalQty: ${totalQtyV}`);
     console.log("     *********     ");
   }
