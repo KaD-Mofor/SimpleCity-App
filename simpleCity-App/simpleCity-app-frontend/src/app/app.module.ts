@@ -19,9 +19,15 @@ import { LoginStatusComponent } from './component/login-status/login-status.comp
 import { OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
 import OktaAuth from '@okta/okta-auth-js';
 import { ProfileComponent } from './component/profile/profile.component';
+import { MembersComponent } from './component/members/members.component';
+import { ContactUsComponent } from './component/contact-us/contact-us.component';
+// import { LoginComponent } from './component/login/login.component';
+// import appConfig from './config/app-config';
 
   // const oktaConfig = appConfig.oidc;
   //  const oktaAuth = new OktaAuth(appConfig.oidc)
+
+  // Alternative
 
   const oktaAuth = new OktaAuth({
     issuer: 'https://dev-52454893.okta.com/oauth2/default',
@@ -43,6 +49,9 @@ import { ProfileComponent } from './component/profile/profile.component';
     CheckoutComponent,
     LoginStatusComponent,
     ProfileComponent,
+    MembersComponent,
+    ContactUsComponent,
+    // LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +61,8 @@ import { ProfileComponent } from './component/profile/profile.component';
     CommonModule,
     NgbModule,
     ReactiveFormsModule,
-    OktaAuthModule.forRoot({ oktaAuth })
+    OktaAuthModule.forRoot({ oktaAuth }) //For Alternative
+    // OktaAuthModule
   ],
   providers: [ProductService, 
           {provide: OKTA_CONFIG, useValue: {oktaAuth}} ],
