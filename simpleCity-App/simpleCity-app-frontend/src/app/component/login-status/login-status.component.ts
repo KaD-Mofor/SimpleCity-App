@@ -22,6 +22,7 @@ export class LoginStatusComponent implements OnInit{
 //     //Subscribe to the authenticate state
 //     this.oktaAuthService.authState$.subscribe(
 //       (result) => {
+//         debugger
 //         this.isAuthenticated = result.isAuthenticated!;
 //         this.getUserDetails();
 
@@ -47,24 +48,27 @@ export class LoginStatusComponent implements OnInit{
 
 // }
 
-title = 'okta-angular-quickstart';
-public isAuthenticated$!: Observable<boolean>;
+// Alternative
 
-constructor(private _router: Router, private _oktaStateService: OktaAuthStateService, @Inject(OKTA_AUTH) private _oktaAuth: OktaAuth) { }
+  title = 'okta-angular-quickstart';
+  public isAuthenticated$!: Observable<boolean>;
 
-public ngOnInit(): void {
-  this.isAuthenticated$ = this._oktaStateService.authState$.pipe(
-    filter((s: AuthState) => !!s),
-    map((s: AuthState) => s.isAuthenticated ?? false)
-  );
-}
+  constructor(private _router: Router, private _oktaStateService: OktaAuthStateService, 
+    @Inject(OKTA_AUTH) private _oktaAuth: OktaAuth) { }
 
-public async signIn() : Promise<void> {
-  await this._oktaAuth.signInWithRedirect();
-}
+  public ngOnInit(): void {
+    this.isAuthenticated$ = this._oktaStateService.authState$.pipe(
+      filter((s: AuthState) => !!s),
+      map((s: AuthState) => s.isAuthenticated ?? false)
+    );
+  }
 
-public async signOut(): Promise<void> {
-  await this._oktaAuth.signOut();
+  public async signIn() : Promise<void> {
+    await this._oktaAuth.signInWithRedirect();
+  }
 
-}
+  public async signOut(): Promise<void> {
+    await this._oktaAuth.signOut();
+
+  }
 }

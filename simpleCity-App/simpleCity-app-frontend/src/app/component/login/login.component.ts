@@ -14,7 +14,7 @@
 
 //   oktaSignIn: any;
 
-//   constructor(@Inject(OKTA_AUTH) public oktaAuth: OktaAuth) {
+//   constructor(@Inject(OKTA_AUTH) private oktaAuth: OktaAuth) {
 
 //     this.oktaSignIn = new OktaSignIn({
 //       logo: 'assets/images/products/Simple City.png',
@@ -34,10 +34,15 @@
 //   ngOnInit(): void {
 //     this.oktaSignIn.remove();
 
+//     debugger
+
 //     this.oktaSignIn.renderEl({
 //       el: '#okta-sign-in-widget'},
 //       (response: any) => {
 //         if (response.status === 'SUCCESS') { 
+
+//             debugger
+
 //           this.oktaAuth.signInWithRedirect();
 //         }
 //       },

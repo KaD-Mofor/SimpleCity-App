@@ -7,11 +7,18 @@
     <button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
 </div> -->
 
-<ng-container *ngIf="(isAuthenticated$ | async) === false; else signout">
+
+<!-- Alternative -->
+<div class="w3-center">
+  <ng-container *ngIf="(isAuthenticated$ | async) === false; else signout">
     <button (click)="signIn()" class="material-icons-outlined text-gray-500"> Sign in </button>
   </ng-container>
+
+
   
   <ng-template #signout>
     <button (click)="signOut()" class="material-icons-outlined text-gray-500">Sign out</button>
+
+    <button routerLink="/members" class="security-btn ml-1">Member</button>
   </ng-template>
-  
+</div>
