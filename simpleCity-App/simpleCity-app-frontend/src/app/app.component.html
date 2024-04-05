@@ -1,0 +1,61 @@
+<!--Navigation-->
+<div> 
+  <div>
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <div class="container">
+          <!-- Logo -->
+          <div class="logo">
+              <a routerLink="/products" class="navbar-brand">
+              <img src="assets/images/products/Simple City.png" alt="simpleCity Logo" height="45" width="50" class="rounded"></a>
+          </div>
+          
+          <!-- Main Navigation Links -->
+          <app-product-category-menu></app-product-category-menu>
+        
+          <!-- Header Search Option -->
+          <app-search></app-search>
+
+          <!-- Cart -->
+          <app-cart-status></app-cart-status>   
+          
+          <!-- User Profile Icon -->
+
+          <app-login-status></app-login-status>
+          <!-- <a class="nav-link far fa-user-circle text-white" style="font-size: 30px" routerLink="/profile"></a> -->
+
+          <!-- <div class="nav-item dropdown">
+              <a class="nav-link far fa-user-circle text-white" style="font-size: 30px" 
+              routerLink="/login" id="navbarDropdown" role="button" 
+              data-bs-toggle="dropdown" aria-expanded="false"></a>
+               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" routerLink="/profile">Profile</a></li>
+                   <li><a class="dropdown-item" href="#">Settings</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                   <li><a class="dropdown-item" href="#">Logout</a></li> 
+              </ul> 
+          </div>
+           -->
+          <!-- Burger Menu -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+          aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>        
+      </div>
+    </nav>
+  </div>
+</div>    
+
+<!--Main page -->
+<!-- <app-product-list></app-product-list> -->
+<router-outlet></router-outlet>
+
+<!-- Detailed Footer -->
+
+<footer class="footer">
+    <div class="container">
+        <ul><a href="#">About Us</a></ul>
+        <ul><a routerLink="/contact-us">Contact Us</a></ul>
+        <ul><a href="#">Help</a></ul>
+    </div>
+</footer>

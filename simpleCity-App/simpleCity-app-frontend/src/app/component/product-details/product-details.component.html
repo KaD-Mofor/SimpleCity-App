@@ -1,0 +1,37 @@
+<div class="section-content section-content-p30">
+    <div class="w3-section">
+        <div class="w3-row">
+            <div class="w3-display-container w3-hover-opacity">
+                <img src="{{product.imageUrl}}" alt="{{product.name}}" class="itemDetailImg ">
+                <div class="w3-display-middle w3-display-hover w3-xlarge w3-center">
+                    <!--@TODO: Update the Buy now button to route to the checkout page onClick-->
+                    <a href="confirmation.html" class="nav-link">
+                        <button class="btn btn-success" type="button">Buy Now</button>
+                    </a>
+                </div>
+                <div class="w3-display-topright w3-display-hover w3-xlarge w3-white w3-circle">
+                    <button (click)="addToCart()" class="nav-link" >
+                        <i class="fas fa-shopping-cart fa-lg text-green" style="font-size: 24px" role="button"></i>
+                    </button>
+                </div>
+                <div class="w3-display-topleft w3-display-hover w3-xxlarge w3-text-red">
+                    <i class="fa fa-heart"></i>
+                </div>
+            </div>
+                <div
+                    class="w3-display w3-text-black w3-light-grey w3-round w3-center">
+                    <i class="price">{{product.unitPrice | currency: 'USD' }}</i>
+                    <div>
+                    <span class="item-name">{{product.name}}</span>
+                    </div>
+                </div>
+            <div class="w3-row">
+                <p class="detailDesc">
+                    {{product.description}}
+                </p>
+            </div>
+            
+        </div>
+        <a routerLink="/product" class="mt-5">Back to Product List</a>
+    </div>
+</div>
