@@ -6,7 +6,7 @@ CREATE TABLE `customers` (
     `id` bigint NOT NULL AUTO_INCREMENT,
     `first_name` varchar(255) DEFAULT NULL,
     `last_name` varchar(255) DEFAULT NULL,
-    `email` varchar(255) DEFAULT NULL,
+    `email` varchar(255) DEFAULT NULL UNIQUE,
     `phone` varchar(255) DEFAULT NULL,
     `create_date` datetime(6) DEFAULT NULL,
     `last_update` datetime(6) DEFAULT NULL,

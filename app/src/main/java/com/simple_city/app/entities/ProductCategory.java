@@ -19,7 +19,7 @@ public class ProductCategory {
     @Column(name = "category_name")
     private String categoryName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category", fetch = FetchType.EAGER)
     private Set<Product> products;
 
 }

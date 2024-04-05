@@ -28,17 +28,17 @@ public class RestDataConfig implements RepositoryRestConfigurer {
      * @param cors
      */
 
-    private EntityManager entityManager;
-
-    @Autowired
-    public RestDataConfig(EntityManager theEntityManager) {
-        entityManager = theEntityManager;
-    }
+//    private EntityManager entityManager;
+//
+//    @Autowired
+//    public RestDataConfig(EntityManager theEntityManager) {
+//        entityManager = theEntityManager;
+//    }
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-//        config.exposeIdsFor(Product.class);
-//        config.exposeIdsFor(ProductCategory.class);
+        config.exposeIdsFor(Product.class);
+        config.exposeIdsFor(ProductCategory.class);
         config.exposeIdsFor(Address.class);
         config.exposeIdsFor(Customer.class);
         config.setDefaultPageSize(Integer.MAX_VALUE);
@@ -47,21 +47,21 @@ public class RestDataConfig implements RepositoryRestConfigurer {
         //@TODO verify if entity ids can be exposed using the above commented method. if yes, delete all code below.
 
         //Automatically expose product id and generate product-category
-        exposeIds(config);
+//        exposeIds(config);
     }
 
-    private void exposeIds(RepositoryRestConfiguration config) {
-        //get classes from entity manager
-        Set<EntityType<?>> entityTypes = entityManager.getMetamodel().getEntities();
-
-        List<Class> entityClasses = new ArrayList<>();
-
-        for (EntityType tempEntityType : entityTypes) {
-            entityClasses.add(tempEntityType.getJavaType());
-        }
-        Class[] domainTypes = entityClasses.toArray(new Class[0]);
-        config.exposeIdsFor(domainTypes);
-    }
+//    private void exposeIds(RepositoryRestConfiguration config) {
+//        //get classes from entity manager
+//        Set<EntityType<?>> entityTypes = entityManager.getMetamodel().getEntities();
+//
+//        List<Class> entityClasses = new ArrayList<>();
+//
+//        for (EntityType tempEntityType : entityTypes) {
+//            entityClasses.add(tempEntityType.getJavaType());
+//        }
+//        Class[] domainTypes = entityClasses.toArray(new Class[0]);
+//        config.exposeIdsFor(domainTypes);
+//    }
 }
 
 

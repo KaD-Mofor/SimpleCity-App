@@ -13,6 +13,9 @@ import com.simple_city.app.entities.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Set;
 import java.util.UUID;
 
@@ -84,7 +87,16 @@ public class CheckoutServiceImpl implements CheckoutService {
 
         // Populate the customer with the cart
         Customer customer = purchase.getCustomer();
-        if (customer != null) {
+
+        //check if customer already exist in db
+        String existingCustomerEmail = customer.getEmail();
+        Customer customerDB = customerRepository.findByEmail(existingCustomerEmail);
+        if (customerDB != null) {
+            customerDB.setLast_update(new Timestamp(System.currentTimeMillis())); //Update the lastUpdate  to this date-time.
+            customer = customerDB; //if customer already exists, just save the cart and updated customer lastUpdate
+            customer.add(cart);
+        } else //else if the customer is new then, save the new customer and add the cart.
+        {
             // Save the customer first
             customer = customerRepository.save(customer);
             customer.add(cart);

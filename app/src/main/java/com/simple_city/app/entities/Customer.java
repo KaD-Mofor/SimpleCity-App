@@ -45,10 +45,10 @@ public class Customer {
 
     @PreUpdate
     public void onUpdate(){
-        this.last_update = new Date();
+        this.last_update = new Date(System.currentTimeMillis());
     }
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Cart> carts = new HashSet<>();
 
     public void add(Cart cart) {
