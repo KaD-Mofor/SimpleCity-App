@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import java.util.ArrayList;
@@ -44,10 +45,22 @@ public class RestDataConfig implements RepositoryRestConfigurer {
         config.setDefaultPageSize(Integer.MAX_VALUE);
         config.setMaxPageSize(Integer.MAX_VALUE);
 
+        //Disable some HTTP methods for some rest Apis
+        HttpMethod[] unsupportedActions = {HttpMethod.PUT, HttpMethod.POST, HttpMethod.DELETE, HttpMethod.PATCH};
+
+        disableHttpMethods(Cart.class, config, unsupportedActions);
+
         //@TODO verify if entity ids can be exposed using the above commented method. if yes, delete all code below.
 
         //Automatically expose product id and generate product-category
 //        exposeIds(config);
+    }
+
+    private void disableHttpMethods(Class theClass, RepositoryRestConfiguration config, HttpMethod[] unsupportedActions) {
+        config.getExposureConfiguration()
+                .forDomainType(theClass)
+                .withItemExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions))
+                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(unsupportedActions));
     }
 
 //    private void exposeIds(RepositoryRestConfiguration config) {

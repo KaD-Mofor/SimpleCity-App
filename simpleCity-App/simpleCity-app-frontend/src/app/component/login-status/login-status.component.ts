@@ -11,8 +11,10 @@ import { Observable, filter, map } from 'rxjs';
 })
 export class LoginStatusComponent implements OnInit{
 
+  storage: Storage = sessionStorage;
+  userFullName: string = '';
+
 //   isAuthenticated: boolean = false;
-//   userFullName: string = '';
 
 //   constructor(private oktaAuthService: OktaAuthStateService,
 //            @Inject(OKTA_AUTH) private oktaAuth: OktaAuth) {}
@@ -50,7 +52,7 @@ export class LoginStatusComponent implements OnInit{
 
 // Alternative
 
-  title = 'okta-angular-quickstart';
+  title = 'SimpleCity';
   public isAuthenticated$!: Observable<boolean>;
 
   constructor(private _router: Router, private _oktaStateService: OktaAuthStateService, 
@@ -61,6 +63,8 @@ export class LoginStatusComponent implements OnInit{
       filter((s: AuthState) => !!s),
       map((s: AuthState) => s.isAuthenticated ?? false)
     );
+
+    this.getUserDetails();
   }
 
   public async signIn() : Promise<void> {
@@ -70,5 +74,20 @@ export class LoginStatusComponent implements OnInit{
   public async signOut(): Promise<void> {
     await this._oktaAuth.signOut();
 
+  }
+
+  getUserDetails() {
+    if (this.isAuthenticated$) {
+    
+      this._oktaAuth.getUser().then(
+        (res) => {
+          this.userFullName = res.name as string;
+
+          //save user's email
+          const customerEmail = res.email;
+          this.storage.setItem('userEmail', JSON.stringify(customerEmail));
+        }          
+      );
+    }
   }
 }

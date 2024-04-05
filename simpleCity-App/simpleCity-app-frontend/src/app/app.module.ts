@@ -21,6 +21,7 @@ import OktaAuth from '@okta/okta-auth-js';
 import { ProfileComponent } from './component/profile/profile.component';
 import { MembersComponent } from './component/members/members.component';
 import { ContactUsComponent } from './component/contact-us/contact-us.component';
+import { OrderHistoryComponent } from './component/order-history/order-history.component';
 // import { LoginComponent } from './component/login/login.component';
 // import appConfig from './config/app-config';
 
@@ -51,6 +52,7 @@ import { ContactUsComponent } from './component/contact-us/contact-us.component'
     ProfileComponent,
     MembersComponent,
     ContactUsComponent,
+    OrderHistoryComponent,
     // LoginComponent
   ],
   imports: [

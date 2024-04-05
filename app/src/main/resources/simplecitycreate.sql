@@ -8,7 +8,7 @@ CREATE TABLE `customers` (
     `last_name` varchar(255) DEFAULT NULL,
     `email` varchar(255) DEFAULT NULL UNIQUE,
     `phone` varchar(255) DEFAULT NULL,
-    `create_date` datetime(6) DEFAULT NULL,
+    `createDate` datetime(6) DEFAULT NULL,
     `last_update` datetime(6) DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;

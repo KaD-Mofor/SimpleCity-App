@@ -32,18 +32,18 @@ public class Cart {
     @Column(name = "order_tracking_number")
     private String orderTrackingNumber;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
     @CreationTimestamp
-    private Date create_date;
+    private Date createDate;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_update")

@@ -6,15 +6,10 @@ import com.simple_city.app.dao.CartRepository;
 import com.simple_city.app.dao.CustomerRepository;
 import com.simple_city.app.dto.Purchase;
 import com.simple_city.app.dto.PurchaseResponse;
-import com.simple_city.app.entities.Address;
-import com.simple_city.app.entities.Cart;
-import com.simple_city.app.entities.CartItemItem;
-import com.simple_city.app.entities.Customer;
+import com.simple_city.app.entities.*;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.sql.Date;
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Set;
 import java.util.UUID;
@@ -39,6 +34,7 @@ public class CheckoutServiceImpl implements CheckoutService {
     }
 
     @Override
+    @Transactional
     public PurchaseResponse placeOrder(Purchase purchase) {
 
         String orderTrackingNumber = generateTrackingNumber();
@@ -109,6 +105,9 @@ public class CheckoutServiceImpl implements CheckoutService {
             address = addressRepository.save(address);
             cart.setAddress(address);
         }
+
+        //set cart status to ordered
+        cart.setStatus(StatusType.ordered);
 
         // Save the cart
         cart = cartRepository.save(cart);

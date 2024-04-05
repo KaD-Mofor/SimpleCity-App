@@ -14,6 +14,8 @@ import { ProfileComponent } from './component/profile/profile.component';
 import { ContactUsComponent } from './component/contact-us/contact-us.component';
 import { MembersComponent } from './component/members/members.component';
 import OktaAuth from '@okta/okta-auth-js';
+import { OrderHistoryComponent } from './component/order-history/order-history.component';
+import { LoginStatusComponent } from './component/login-status/login-status.component';
 // import { Router } from '@okta/okta-signin-widget/types/packages/@okta/courage-dist/types';
 
   // const oktaConfig = appConfig.oidc;
@@ -26,13 +28,16 @@ import OktaAuth from '@okta/okta-auth-js';
   }
 
 const routes: Routes = [
-  { path: 'profile', component: ProfileComponent },
+  {path: 'order-history', component: OrderHistoryComponent, 
+                    canActivate: [ OktaAuthGuard ],            //Viewable by authenticated users only
+                    data: {onAuthRequired: sendToProfile}},    //Else, send to login
+  { path: 'profile', component: LoginStatusComponent },
   // {path: 'login', component: LoginComponent},
   {path: 'login/callback', component: OktaCallbackComponent},
   {path: 'contact-us', component: ContactUsComponent},
   {path: 'members', component: MembersComponent, 
-                    canActivate: [OktaAuthGuard], 
-                    data: {onAuthRequired: sendToProfile} },
+                    canActivate: [OktaAuthGuard],             //Viewable by authenticated users only
+                    data: {onAuthRequired: sendToProfile} },  //Else, send to login
   {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'products', component: ProductListComponent},

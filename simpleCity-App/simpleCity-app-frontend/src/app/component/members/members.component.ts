@@ -5,11 +5,6 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './members.component.html',
   styleUrl: './members.component.css'
 })
-export class MembersComponent implements OnInit {
-
-  
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+export class MembersComponent {
 
 }
