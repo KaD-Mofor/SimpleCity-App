@@ -10,6 +10,9 @@ import com.simple_city.app.entities.*;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Set;
 import java.util.UUID;
