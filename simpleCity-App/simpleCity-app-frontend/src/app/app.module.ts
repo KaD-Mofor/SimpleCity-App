@@ -3,10 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './component/product-list/product-list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProductService } from './service/product.service';
 import { RouterModule } from '@angular/router';
-import { ProductCategoryMenuComponent } from './component/product-category-menu/product-category-menu.component';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './component/search/search.component';
 import { ProductDetailsComponent } from './component/product-details/product-details.component';
@@ -22,21 +21,22 @@ import { ProfileComponent } from './component/profile/profile.component';
 import { MembersComponent } from './component/members/members.component';
 import { ContactUsComponent } from './component/contact-us/contact-us.component';
 import { OrderHistoryComponent } from './component/order-history/order-history.component';
+import { ProductCategoryMenuComponent } from './component/product-category-menu/product-category-menu.component';
+import appConfig from './config/app-config';
 // import { LoginComponent } from './component/login/login.component';
-// import appConfig from './config/app-config';
 
   // const oktaConfig = appConfig.oidc;
-  //  const oktaAuth = new OktaAuth(appConfig.oidc)
+   const oktaAuth = new OktaAuth(appConfig.oidc)
 
   // Alternative
 
-  const oktaAuth = new OktaAuth({
-    issuer: 'https://dev-52454893.okta.com/oauth2/default',
-    clientId: '0oag4hoawrrsSNJoW5d7',
-    redirectUri: 'http://localhost:4200/login/callback',
-    scopes: ['openid', 'profile', 'email'],
-    // redirectUri: window.location.origin + '/login/callback'
-  });
+  // const oktaAuth = new OktaAuth({
+  //   issuer: 'https://dev-52454893.okta.com/oauth2/default',
+  //   clientId: '0oag4hoawrrsSNJoW5d7',
+  //   redirectUri: 'http://localhost:4200/login/callback',
+  //   scopes: ['openid', 'profile', 'email'],
+  //   // redirectUri: window.location.origin + '/login/callback'
+  // });
 
 @NgModule({
   declarations: [
@@ -66,8 +66,9 @@ import { OrderHistoryComponent } from './component/order-history/order-history.c
     OktaAuthModule.forRoot({ oktaAuth }) //For Alternative
     // OktaAuthModule
   ],
-  providers: [ProductService, 
-          {provide: OKTA_CONFIG, useValue: {oktaAuth}} ],
+  providers: [HttpClient, ProductService, 
+          {provide: OKTA_CONFIG, useValue: {oktaAuth}}
+        ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

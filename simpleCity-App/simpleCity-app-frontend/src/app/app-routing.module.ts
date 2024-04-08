@@ -6,7 +6,7 @@ import { CartDetailsComponent } from './component/cart-details/cart-details.comp
 import { CheckoutComponent } from './component/checkout/checkout.component';
 import { OktaAuthGuard, OktaAuthModule, OktaCallbackComponent } from '@okta/okta-angular';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 // import { LoginComponent } from './component/login/login.component';
