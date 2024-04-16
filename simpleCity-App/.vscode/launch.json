@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "name": "Docker Node.js Launch",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run: debug",
+            "platform": "node",
+            "node": {
+                "package": "${workspaceFolder}/simpleCity-app-frontend/node_modules/@babel/helper-simple-access/package.json",
+                "localRoot": "${workspaceFolder}/simpleCity-app-frontend/node_modules/@babel/helper-simple-access"
+            }
+        }
+    ]
+}
