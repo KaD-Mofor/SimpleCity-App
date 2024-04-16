@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: Toor
+      MYSQL_DATABASE: simple-city-app
+      MYSQL_USER: simpleCity-app
+      MYSQL_PASSWORD: SimpleCityApp
+    ports:
+      - "3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+
+  spring-boot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spring_boot_app
+    ports:
+      - "8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/simple-city-app?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: simpleCity-app
+      SPRING_DATASOURCE_PASSWORD: SimpleCityApp
+      SPRING_SQL_INIT_MODE: always
+
+#    command: cmd /c "timeout /t 30 && mvn clean spring-boot:run"
+
+volumes:
+  mysql_data:
