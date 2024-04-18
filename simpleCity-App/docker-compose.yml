@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  babelhelpersimpleaccess:
+    image: babelhelpersimpleaccess
+    build:
+      context: simpleCity-app-frontend/node_modules/@babel/helper-simple-access
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
